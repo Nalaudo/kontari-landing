@@ -1,0 +1,44 @@
+import { useScrollReveal } from "./hooks/useScrollReveal";
+import CursorGlow from "./components/CursorGlow";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Stats from "./components/Stats";
+import ProblemSolution from "./components/ProblemSolution";
+import Features from "./components/Features";
+import Demo from "./components/Demo";
+import Security from "./components/Security";
+import HowItWorks from "./components/HowItWorks";
+import Testimonials from "./components/Testimonials";
+import Pricing from "./components/Pricing";
+import Faq from "./components/Faq";
+import FinalCta from "./components/FinalCta";
+import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
+
+export default function App() {
+  useScrollReveal();
+
+  return (
+    <>
+      <CursorGlow />
+      <Navbar />
+
+      <main id="top" className="relative">
+        <Hero />
+        <Stats />
+        <ProblemSolution />
+        <Features />
+        <Demo />
+        <Security />
+        <HowItWorks />
+        <Testimonials />
+        <Pricing />
+        <Faq />
+        <FinalCta />
+      </main>
+
+      <Footer />
+      <BackToTop />
+    </>
+  );
+}

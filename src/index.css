@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "ui-sans-serif", "system-ui", "sans-serif";
+  --font-mono: "JetBrains Mono", "ui-monospace", "monospace";
+
+  --color-brand-50: #eef1fd;
+  --color-brand-100: #dde3fb;
+  --color-brand-200: #bcc7f7;
+  --color-brand-300: #93a3f0;
+  --color-brand-400: #6478e6;
+  --color-brand-500: #4056d6;
+  --color-brand-600: #3142b8;
+  --color-brand-700: #293596;
+  --color-brand-800: #242e79;
+  --color-brand-900: #212a63;
+  --color-brand-950: #141833;
+
+  --animate-blob: blob 14s infinite ease-in-out;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+
+  @keyframes blob {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.15);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-brand-950);
+    background-color: #f5f6fb;
+    transition:
+      color 0.3s,
+      background-color 0.3s;
+    overflow-x: hidden;
+  }
+  .dark body {
+    color: var(--color-slate-100);
+    background-color: #0b0e21;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #a8b0e0;
+    border-radius: 999px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: #3142b8;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #4056d6 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(33, 42, 99, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(33, 42, 99, 0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+.dark .bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Tilt cards */
+.tilt-card {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* Custom cursor glow */
+#cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(64, 86, 214, 0.2) 0%,
+    rgba(16, 185, 129, 0.1) 45%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  filter: blur(8px);
+}
+.dark #cursor-glow {
+  background: radial-gradient(
+    circle,
+    rgba(99, 120, 230, 0.28) 0%,
+    rgba(16, 185, 129, 0.14) 45%,
+    transparent 70%
+  );
+}
+
+/* FAQ smooth-grid accordion */
+.faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  overflow: hidden;
+}
+.faq-item.active .faq-content {
+  grid-template-rows: 1fr;
+}
+.faq-content > div {
+  overflow: hidden;
+  min-height: 0;
+}
+.faq-item.active .chev {
+  transform: rotate(180deg);
+}
+.chev {
+  transition: transform 0.3s ease;
+}
+
+/* Testimonials */
+.t-track {
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Reveal defaults (GSAP will animate from these) */
+.reveal {
+  opacity: 1;
+}
+
+/* Marquee row duplicate trick */
+.marquee-track {
+  animation: marquee 26s linear infinite;
+}
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Pricing highlight ring glow */
+.glow-ring {
+  box-shadow:
+    0 0 0 1px rgba(64, 86, 214, 0.4),
+    0 20px 60px -15px rgba(64, 86, 214, 0.45);
+}
+
+/* Blinking cursor for demo input */
+.type-caret::after {
+  content: "|";
+  animation: caret 1s step-end infinite;
+  color: #4056d6;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.encrypt-cell {
+  font-family: "JetBrains Mono", monospace;
+}
