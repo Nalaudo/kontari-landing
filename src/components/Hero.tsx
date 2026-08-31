@@ -12,6 +12,7 @@ import CtaLink from "./CtaLink";
 
 const MARQUEE_ITEMS = [
   "AFIP / ARCA",
+  "Asistente de IA",
   "Mercado Pago",
   "Cifrado AES-256-GCM",
   "PBKDF2 600.000 iteraciones",
@@ -49,21 +50,24 @@ export default function Hero() {
           </h1>
 
           <p className="reveal-up mt-6 text-lg text-brand-950/70 dark:text-slate-300 max-w-xl">
-            Klientfy centraliza clientes, datos de AFIP/ARCA, claves fiscales y
-            documentación en una sola plataforma. Dejá de perseguir Excels,
-            post-its y carpetas: gestioná todo tu portafolio desde un solo lugar.
+            Kontari centraliza clientes, AFIP/ARCA, claves fiscales, tareas y
+            documentación en una sola plataforma, con un{" "}
+            <span className="font-semibold text-brand-700 dark:text-brand-200">
+              asistente de IA
+            </span>{" "}
+            que responde sobre tu cartera, lee tus documentos y redacta por vos.
           </p>
 
           <div className="reveal-up mt-9 flex flex-wrap items-center gap-4">
             <CtaLink
-              href="/checkout"
+              href="/auth/login"
               className="group inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3.5 rounded-full shadow-xl shadow-brand-600/30 hover:shadow-brand-600/50 hover:-translate-y-0.5 transition-all"
             >
-              Empezar prueba gratis de 7 días
+              Empezar prueba gratis de 14 días
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </CtaLink>
             <a
-              href="#demo"
+              href="#como-funciona"
               className="inline-flex items-center gap-2 font-semibold px-6 py-3.5 rounded-full border border-brand-950/15 dark:border-white/20 hover:bg-brand-950/5 dark:hover:bg-white/10 transition"
             >
               <PlayCircle className="w-4 h-4" />
@@ -81,6 +85,10 @@ export default function Hero() {
               Integrado con AFIP/ARCA
             </div>
             <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-emerald-600" />
+              Asistente de IA integrado
+            </div>
+            <div className="flex items-center gap-2">
               <CreditCard className="w-4 h-4 text-emerald-600" />
               Pagos con Mercado Pago
             </div>
@@ -96,7 +104,7 @@ export default function Hero() {
               <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
               <span className="ml-3 text-xs opacity-50 font-mono">
-                app.klientfy.com/dashboard
+                app.kontari.com/dashboard
               </span>
             </div>
             <div className="p-5 grid grid-cols-2 gap-3">

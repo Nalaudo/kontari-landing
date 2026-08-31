@@ -28,7 +28,7 @@ const POINTS = [
     icon: EyeOff,
     tone: "emerald" as const,
     title: "Arquitectura zero-knowledge",
-    desc: "Ni siquiera el equipo de Klientfy puede leer las claves fiscales en texto plano.",
+    desc: "Ni siquiera el equipo de Kontari puede leer las claves fiscales en texto plano.",
   },
   {
     icon: ShieldCheck,
@@ -54,7 +54,10 @@ export default function Security() {
   }, []);
 
   return (
-    <section id="seguridad" className="py-20 md:py-28">
+    <section
+      id="seguridad"
+      className="py-20 md:py-28 bg-white dark:bg-brand-900/30"
+    >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-16 items-center">
         <div className="reveal-up order-2 lg:order-1">
           <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">

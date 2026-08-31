@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-const STORAGE_KEY = "klientfy-landing-theme";
+const STORAGE_KEY = "kontari-landing-theme";
 
 type Theme = "light" | "dark";
 

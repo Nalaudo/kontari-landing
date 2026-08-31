@@ -5,7 +5,7 @@ import Hero from "./components/Hero";
 import Stats from "./components/Stats";
 import ProblemSolution from "./components/ProblemSolution";
 import Features from "./components/Features";
-import Demo from "./components/Demo";
+import AiSection from "./components/AiSection";
 import Security from "./components/Security";
 import HowItWorks from "./components/HowItWorks";
 import Testimonials from "./components/Testimonials";
@@ -14,6 +14,7 @@ import Faq from "./components/Faq";
 import FinalCta from "./components/FinalCta";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import CookieBanner from "./components/CookieBanner";
 
 export default function App() {
   useScrollReveal();
@@ -28,7 +29,7 @@ export default function App() {
         <Stats />
         <ProblemSolution />
         <Features />
-        <Demo />
+        <AiSection />
         <Security />
         <HowItWorks />
         <Testimonials />
@@ -39,6 +40,7 @@ export default function App() {
 
       <Footer />
       <BackToTop />
+      <CookieBanner />
     </>
   );
 }

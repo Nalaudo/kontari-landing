@@ -4,14 +4,14 @@ const WITHOUT = [
   "Planillas de Excel desactualizadas repartidas entre varias personas",
   "Claves fiscales guardadas en post-its, WhatsApp o Word sin protección",
   "Buscar vencimientos y presentaciones a mano, cliente por cliente",
-  "Descargar comprobantes de AFIP uno por uno, todos los meses",
+  "Documentación de cada cliente desperdigada entre mails, WhatsApp y carpetas",
 ];
 
 const WITH = [
   "Un solo dashboard con todos tus clientes activos y su estado real",
   "Bóveda de claves fiscales cifrada de extremo a extremo",
   "Datos de AFIP/ARCA autocompletados con solo ingresar el CUIT",
-  "Descargas masivas en ZIP de liquidaciones y comprobantes",
+  "Vencimientos, tareas y documentos de cada cliente en un mismo lugar",
 ];
 
 export default function ProblemSolution() {
@@ -31,7 +31,7 @@ export default function ProblemSolution() {
         <div className="mt-14 grid md:grid-cols-2 gap-6">
           <div className="reveal-up rounded-2xl border border-red-500/20 bg-red-50/60 dark:bg-red-500/5 p-8">
             <h3 className="font-bold text-lg flex items-center gap-2 text-red-600 dark:text-red-400">
-              <Frown /> Sin Klientfy
+              <Frown /> Sin Kontari
             </h3>
             <ul className="mt-6 space-y-4 text-sm">
               {WITHOUT.map((item) => (
@@ -44,7 +44,7 @@ export default function ProblemSolution() {
           </div>
           <div className="reveal-up rounded-2xl border border-emerald-500/20 bg-emerald-50/60 dark:bg-emerald-500/5 p-8">
             <h3 className="font-bold text-lg flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
-              <Smile /> Con Klientfy
+              <Smile /> Con Kontari
             </h3>
             <ul className="mt-6 space-y-4 text-sm">
               {WITH.map((item) => (

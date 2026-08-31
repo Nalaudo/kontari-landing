@@ -14,17 +14,17 @@ export default function FinalCta() {
             </h2>
             <p className="mt-4 text-white/60 max-w-xl mx-auto">
               Sumate a los estudios contables que ya digitalizaron su gestión con
-              Klientfy.
+              Kontari.
             </p>
             <CtaLink
-              href="/checkout"
+              href="/auth/login"
               className="mt-8 inline-flex items-center gap-2 bg-white text-brand-950 font-bold px-7 py-4 rounded-full hover:-translate-y-0.5 hover:shadow-2xl transition-all"
             >
-              Empezar prueba gratis de 7 días
+              Empezar prueba gratis de 14 días
               <ArrowRight className="w-4 h-4" />
             </CtaLink>
             <p className="mt-4 text-xs text-white/40">
-              7 días gratis · Sin permanencia · Pagos con Mercado Pago
+              14 días gratis · Sin permanencia · Pagos con Mercado Pago
             </p>
           </div>
         </div>

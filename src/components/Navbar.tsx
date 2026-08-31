@@ -14,12 +14,20 @@ import CtaLink from "./CtaLink";
 const NAV_LINKS = [
   { href: "#producto", label: "Producto" },
   { href: "#funcionalidades", label: "Funcionalidades" },
+  { href: "#ia", label: "IA" },
   { href: "#seguridad", label: "Seguridad" },
   { href: "#precios", label: "Precios" },
   { href: "#faq", label: "FAQ" },
 ];
 
-const SECTION_IDS = ["producto", "funcionalidades", "seguridad", "precios", "faq"];
+const SECTION_IDS = [
+  "producto",
+  "funcionalidades",
+  "ia",
+  "seguridad",
+  "precios",
+  "faq",
+];
 
 export default function Navbar() {
   const { toggle } = useTheme();
@@ -65,13 +73,13 @@ export default function Navbar() {
         >
           <a href="#top" className="flex items-center gap-2 shrink-0">
             <img
-              src="/assets/klientfy-logo.svg"
-              alt="Klientfy"
+              src="/assets/kontari-logo.svg"
+              alt="Kontari"
               className="h-6 md:h-7 w-auto dark:hidden"
             />
             <img
-              src="/assets/klientfy-logo-white.svg"
-              alt="Klientfy"
+              src="/assets/kontari-logo-white.svg"
+              alt="Kontari"
               className="h-6 md:h-7 w-auto hidden dark:block"
             />
           </a>
@@ -107,7 +115,7 @@ export default function Navbar() {
             </button>
             <div className="hidden lg:flex items-center gap-2">
               <a
-                href="https://contadores.klientfy.com"
+                href="https://contadores.kontari.com"
                 title="Acceso contadores"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-2 rounded-full border border-brand-950/15 dark:border-white/20 hover:bg-brand-950/5 dark:hover:bg-white/10 transition"
               >
@@ -115,7 +123,7 @@ export default function Navbar() {
                 <span className="hidden xl:inline">Contadores</span>
               </a>
               <a
-                href="https://clientes.klientfy.com"
+                href="https://clientes.kontari.com"
                 title="Acceso clientes"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-2 rounded-full border border-brand-950/15 dark:border-white/20 hover:bg-brand-950/5 dark:hover:bg-white/10 transition"
               >
@@ -124,7 +132,7 @@ export default function Navbar() {
               </a>
             </div>
             <CtaLink
-              href="/checkout"
+              href="/auth/login"
               className="inline-flex items-center gap-1.5 text-sm font-semibold bg-brand-600 hover:bg-brand-700 text-white px-4 py-2.5 rounded-full shadow-lg shadow-brand-600/30 hover:shadow-brand-600/50 hover:-translate-y-0.5 transition-all"
             >
               Empezar gratis <ArrowRight className="w-4 h-4" />
@@ -149,13 +157,13 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between h-16 px-5 border-b border-brand-950/10 dark:border-white/10">
           <img
-            src="/assets/klientfy-logo.svg"
-            alt="Klientfy"
+            src="/assets/kontari-logo.svg"
+            alt="Kontari"
             className="h-6 w-auto dark:hidden"
           />
           <img
-            src="/assets/klientfy-logo-white.svg"
-            alt="Klientfy"
+            src="/assets/kontari-logo-white.svg"
+            alt="Kontari"
             className="h-6 w-auto hidden dark:block"
           />
           <button
@@ -179,19 +187,19 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://contadores.klientfy.com"
+            href="https://contadores.kontari.com"
             className="py-3 opacity-70 flex items-center gap-2"
           >
             <Briefcase className="w-4 h-4" /> Acceso contadores
           </a>
           <a
-            href="https://clientes.klientfy.com"
+            href="https://clientes.kontari.com"
             className="py-3 opacity-70 flex items-center gap-2"
           >
             <User className="w-4 h-4" /> Acceso clientes
           </a>
           <a
-            href="/checkout"
+            href="/auth/login"
             className="mt-3 text-center bg-brand-600 text-white rounded-full py-3"
           >
             Empezar gratis

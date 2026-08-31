@@ -7,7 +7,7 @@ const STEPS = [
   {
     n: 2,
     title: "Cargá tus clientes",
-    desc: "Ingresá el CUIT y Klientfy completa los datos fiscales automáticamente.",
+    desc: "Ingresá el CUIT y Kontari completa los datos fiscales automáticamente.",
   },
   {
     n: 3,
@@ -17,13 +17,13 @@ const STEPS = [
   {
     n: 4,
     title: "Gestioná todo",
-    desc: "Documentos, vencimientos, equipo y pagos, centralizados en un dashboard.",
+    desc: "Documentos, vencimientos, equipo y pagos en un dashboard, con un asistente de IA que responde y redacta por vos.",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 md:py-28 bg-white dark:bg-brand-900/30">
+    <section id="como-funciona" className="py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center max-w-2xl mx-auto reveal-up">
           <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">

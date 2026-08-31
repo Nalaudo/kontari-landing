@@ -12,16 +12,28 @@ const COLUMNS = [
     title: "Empresa",
     links: [
       { label: "Sobre nosotros", href: "#" },
-      { label: "Contacto", href: "mailto:contacto@klientfy.com" },
+      { label: "Contacto", href: "mailto:contacto@kontari.com" },
       { label: "Blog", href: "#" },
     ],
   },
   {
     title: "Legal",
     links: [
-      { label: "Términos y condiciones", href: "#" },
-      { label: "Privacidad", href: "#" },
-      { label: "Cookies", href: "#" },
+      { label: "Términos y condiciones", href: "/legal/terminos.html" },
+      { label: "Política de privacidad", href: "/legal/privacidad.html" },
+      { label: "Política de cookies", href: "/legal/cookies.html" },
+      {
+        label: "Tratamiento de datos",
+        href: "/legal/tratamiento-de-datos.html",
+      },
+      {
+        label: "Botón de arrepentimiento",
+        href: "mailto:bajas@kontari.com?subject=Bot%C3%B3n%20de%20arrepentimiento",
+      },
+      {
+        label: "Baja de suscripción",
+        href: "mailto:bajas@kontari.com?subject=Baja%20de%20suscripci%C3%B3n",
+      },
     ],
   },
 ];
@@ -33,13 +45,13 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-10">
           <div>
             <img
-              src="/assets/klientfy-logo.svg"
-              alt="Klientfy"
+              src="/assets/kontari-logo.svg"
+              alt="Kontari"
               className="h-6 w-auto dark:hidden"
             />
             <img
-              src="/assets/klientfy-logo-white.svg"
-              alt="Klientfy"
+              src="/assets/kontari-logo-white.svg"
+              alt="Kontari"
               className="h-6 w-auto hidden dark:block"
             />
             <p className="mt-4 text-sm opacity-60 max-w-xs">
@@ -63,7 +75,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-12 pt-6 border-t border-brand-950/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs opacity-50">
-          <p>© 2026 Klientfy. Todos los derechos reservados.</p>
+          <p>© 2026 Kontari. Todos los derechos reservados.</p>
           <p>Hecho con ♥ en Argentina 🇦🇷</p>
         </div>
       </div>

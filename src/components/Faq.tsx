@@ -3,8 +3,8 @@ import { ChevronDown } from "lucide-react";
 
 const FAQS = [
   {
-    q: "¿Qué es Klientfy?",
-    a: "Klientfy es una plataforma de gestión pensada para estudios contables y contadores independientes en Argentina: centraliza clientes, datos fiscales, documentación y equipo en un solo lugar.",
+    q: "¿Qué es Kontari?",
+    a: "Kontari es una plataforma de gestión pensada para estudios contables y contadores independientes en Argentina: centraliza clientes, datos fiscales, documentación y equipo en un solo lugar.",
   },
   {
     q: "¿Cómo obtienen los datos de mis clientes?",
@@ -12,19 +12,35 @@ const FAQS = [
   },
   {
     q: "¿Qué tan segura es la clave fiscal de mis clientes?",
-    a: "Se cifra en tu navegador con AES-256-GCM y una clave derivada mediante PBKDF2 con 600.000 iteraciones antes de enviarse. Ni el equipo de Klientfy puede acceder a las claves en texto plano.",
+    a: "Se cifra en tu navegador con AES-256-GCM y una clave derivada mediante PBKDF2 con 600.000 iteraciones antes de enviarse. Ni el equipo de Kontari puede acceder a las claves en texto plano.",
   },
   {
-    q: "¿Puedo cancelar cuando quiera?",
-    a: "Sí, no hay permanencia mínima. Podés cancelar tu suscripción en cualquier momento desde tu panel de facturación.",
+    q: "¿Kontari usa inteligencia artificial?",
+    a: "Sí. Incluye un asistente de IA integrado a toda la app: responde preguntas sobre tu cartera y tus vencimientos, analiza los documentos que subís (período, importes, CUIT) y redacta comunicaciones. Toda acción que escriba o envíe algo —crear una tarea, agendar una reunión, mandar un mensaje— la confirmás vos primero.",
   },
   {
-    q: "¿Cuántos clientes puedo cargar?",
-    a: "Los planes actuales no tienen un límite estricto de clientes, sujeto a una política de uso justo. Si tenés un estudio grande, escribinos y armamos un plan a medida.",
+    q: "¿Qué pasa con los datos de mis clientes al usar la IA?",
+    a: "La IA viene desactivada: la habilita un administrador del estudio desde Configuración. Cuando está activa, los datos necesarios de cada consulta se envían al proveedor del modelo (a través de Vercel AI Gateway) únicamente para responder esa consulta; no se usan para entrenar modelos. El proveedor está declarado en la política de privacidad y podés desactivar la función cuando quieras.",
   },
   {
-    q: "¿Klientfy reemplaza mi sistema de facturación?",
-    a: "No. Klientfy se especializa en la gestión de clientes, datos fiscales y documentación de tu estudio, y se integra con tu flujo de trabajo actual.",
+    q: "¿Qué diferencia a cada plan?",
+    a: "Solo es para un contador que gestiona su cartera puertas adentro. Estudio suma trabajo en equipo: hasta 3 profesionales con roles y permisos, organigrama, registro de tiempos y capacidad. Portal agrega la app para tus clientes, con chat y carga de documentación de su lado.",
+  },
+  {
+    q: "¿Mis clientes pueden entrar a la plataforma?",
+    a: "Con el plan Portal, sí: cada cliente tiene su propia app donde ve sus vencimientos, sube documentación y chatea con el estudio. En los planes Solo y Estudio la gestión es interna del estudio.",
+  },
+  {
+    q: "¿Puedo cambiar de plan o cancelar cuando quiera?",
+    a: "Sí, no hay permanencia mínima. Podés cancelar en cualquier momento desde tu configuración, y volver a suscribirte al plan que quieras.",
+  },
+  {
+    q: "¿Cuántos clientes y usuarios puedo cargar?",
+    a: "No hay un límite estricto de clientes (sujeto a uso justo). Los planes se diferencian por funciones y por profesionales del estudio: Solo incluye 1, Estudio y Portal hasta 3. Si son más, escribinos y armamos un plan a medida.",
+  },
+  {
+    q: "¿Kontari reemplaza mi sistema de facturación?",
+    a: "No. Kontari se especializa en la gestión de clientes, datos fiscales, tareas y documentación de tu estudio, y se integra con tu flujo de trabajo actual.",
   },
 ];
 
@@ -32,7 +48,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 md:py-28">
+    <section id="faq" className="py-20 md:py-28 bg-white dark:bg-brand-900/30">
       <div className="max-w-3xl mx-auto px-5 sm:px-8">
         <div className="text-center reveal-up">
           <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">

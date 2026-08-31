@@ -4,7 +4,7 @@ import { Quote } from "lucide-react";
 const TESTIMONIALS = [
   {
     quote:
-      "Dejé de perseguir carpetas y post-its. Ahora todo mi estudio vive en Klientfy.",
+      "Dejé de perseguir carpetas y post-its. Ahora todo mi estudio vive en Kontari.",
     name: "Marina L.",
     role: "Contadora Pública, Rosario",
   },
@@ -16,7 +16,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "La seguridad de las claves fiscales era nuestra mayor preocupación. Klientfy la resolvió.",
+      "La seguridad de las claves fiscales era nuestra mayor preocupación. Kontari la resolvió.",
     name: "Sofía R.",
     role: "Contadora, Córdoba",
   },
@@ -34,7 +34,7 @@ export default function Testimonials() {
   }, [paused, count]);
 
   return (
-    <section className="py-20 md:py-28 overflow-hidden">
+    <section className="py-20 md:py-28 overflow-hidden bg-white dark:bg-brand-900/30">
       <div className="max-w-5xl mx-auto px-5 sm:px-8 text-center reveal-up">
         <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">
           Testimonios

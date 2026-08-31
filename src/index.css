@@ -173,6 +173,32 @@
   );
 }
 
+/* Custom cursor dot (replaces the native cursor on desktop) */
+#cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 9999px;
+  background: #4056d6;
+  box-shadow: 0 0 12px 2px rgba(64, 86, 214, 0.55);
+  transition: opacity 0.25s ease;
+}
+.dark #cursor-dot {
+  background: #93a3f0;
+  box-shadow: 0 0 14px 3px rgba(99, 120, 230, 0.6);
+}
+
+@media (min-width: 768px) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
 /* FAQ smooth-grid accordion */
 .faq-content {
   display: grid;
@@ -217,18 +243,6 @@
   box-shadow:
     0 0 0 1px rgba(64, 86, 214, 0.4),
     0 20px 60px -15px rgba(64, 86, 214, 0.45);
-}
-
-/* Blinking cursor for demo input */
-.type-caret::after {
-  content: "|";
-  animation: caret 1s step-end infinite;
-  color: #4056d6;
-}
-@keyframes caret {
-  50% {
-    opacity: 0;
-  }
 }
 
 .encrypt-cell {

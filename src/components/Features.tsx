@@ -1,11 +1,15 @@
 import {
-  CalendarClock,
-  FileSpreadsheet,
-  FolderDown,
+  Clock,
+  FolderTree,
+  Landmark,
   LayoutDashboard,
+  LayoutGrid,
   LockKeyhole,
+  Megaphone,
+  MessagesSquare,
   SearchCheck,
-  ShieldCheck,
+  Sparkles,
+  UserCog,
   Users,
   type LucideIcon,
 } from "lucide-react";
@@ -24,15 +28,23 @@ const FEATURES: Feature[] = [
   {
     icon: Users,
     tone: "brand",
-    title: "Gestión de clientes multi-estudio",
-    desc: "Administrá el portafolio completo de tus clientes desde un solo lugar. Activá o desactivá sin perder el historial ni la información cargada.",
-    extraClass: "lg:col-span-2 lg:row-span-1",
+    title: "Cartera de clientes centralizada",
+    desc: "Todo el portafolio de tu estudio en un solo lugar: ficha, estado, historial y actividad de cada cliente. Activá o desactivá sin perder la información cargada.",
+    extraClass: "lg:col-span-2",
   },
   {
     icon: SearchCheck,
     tone: "emerald",
     title: "Autocompletado AFIP/ARCA",
-    desc: "Ingresá un CUIT y Klientfy trae automáticamente razón social, actividad, domicilio fiscal y estado del contribuyente.",
+    desc: "Ingresá un CUIT y Kontari trae razón social, actividad, domicilio fiscal y estado del contribuyente.",
+  },
+  {
+    icon: Sparkles,
+    tone: "brand",
+    title: "Asistente de IA integrado",
+    desc: "Un chat en toda la app que responde sobre tu cartera y tus vencimientos, lee los documentos que subís y redacta comunicaciones. Cada acción la confirmás vos.",
+    extraClass: "lg:col-span-2 relative overflow-hidden",
+    badge: "Nuevo",
   },
   {
     icon: LockKeyhole,
@@ -41,37 +53,55 @@ const FEATURES: Feature[] = [
     desc: "Las claves se cifran en el navegador con AES-256-GCM antes de guardarse. Ni nuestro equipo puede leerlas.",
   },
   {
-    icon: FolderDown,
+    icon: Landmark,
     tone: "emerald",
-    title: "Descargas masivas en ZIP",
-    desc: "Bajá liquidaciones y comprobantes de todos tus clientes en un clic, sin entrar a AFIP uno por uno.",
+    title: "Impuestos y vencimientos",
+    desc: "Calendario de obligaciones por cliente y por terminación de CUIT, con alertas automáticas para no perderte ninguna presentación.",
   },
   {
-    icon: FileSpreadsheet,
+    icon: FolderTree,
     tone: "brand",
-    title: "Importación desde Excel",
-    desc: "Cargá códigos COE y datos en lote directamente desde tus planillas existentes.",
+    title: "Documentos por cliente",
+    desc: "Repositorio de la documentación de cada cliente —balances, constancias, facturas, recibos— organizada en carpetas y vinculada a sus tareas e impuestos.",
   },
   {
-    icon: ShieldCheck,
+    icon: LayoutGrid,
     tone: "emerald",
-    title: "Roles y permisos de equipo",
-    desc: "Definí qué puede ver y hacer cada integrante de tu estudio: administradores, contadores y asistentes, con permisos por módulo.",
+    title: "Tareas, plantillas y tablero",
+    desc: "Operá con un tablero tipo kanban, generá tareas recurrentes desde plantillas y seguí el avance de todo el estudio, período por período.",
     extraClass: "lg:col-span-2",
+  },
+  {
+    icon: UserCog,
+    tone: "brand",
+    title: "Equipo con roles y permisos",
+    desc: "Sumá colaboradores con permisos por módulo: administradores, contadores y asistentes. Organigrama con áreas, seniority y supervisores.",
+  },
+  {
+    icon: Clock,
+    tone: "emerald",
+    title: "Tiempos y capacidad",
+    desc: "Registrá horas por cliente y tarea, y visualizá la carga real de cada integrante para repartir mejor el trabajo.",
+  },
+  {
+    icon: MessagesSquare,
+    tone: "brand",
+    title: "Portal y chat con tus clientes",
+    desc: "Con el plan Portal, cada cliente tiene su propia app para ver sus vencimientos, subir documentación y chatear directo con el estudio.",
+    extraClass: "lg:col-span-2 relative overflow-hidden",
+    badge: "Plan Portal",
+  },
+  {
+    icon: Megaphone,
+    tone: "emerald",
+    title: "Comunicaciones y campañas",
+    desc: "Segmentá tu cartera y enviá campañas de email con plantillas reutilizables.",
   },
   {
     icon: LayoutDashboard,
     tone: "brand",
-    title: "Dashboard en tiempo real",
-    desc: "Clientes activos, documentos pendientes, vencimientos e ingresos del mes, de un vistazo.",
-  },
-  {
-    icon: CalendarClock,
-    tone: "emerald",
-    title: "Calendario de vencimientos",
-    desc: "Alertas automáticas por cliente y obligación para no perderte ninguna presentación.",
-    extraClass: "relative overflow-hidden",
-    badge: "Próximamente",
+    title: "Dashboard y reportes",
+    desc: "Clientes activos, pendientes, vencimientos e ingresos del mes. Reportes de productividad, rentabilidad y riesgo de cartera.",
   },
 ];
 
@@ -94,8 +124,8 @@ export default function Features() {
             Todo lo que tu estudio necesita, en un solo lugar
           </h2>
           <p className="mt-4 text-brand-950/60 dark:text-slate-400">
-            Una plataforma pensada por y para contadores argentinos, de principio
-            a fin.
+            Una plataforma pensada por y para contadores argentinos: de la
+            gestión interna del equipo al vínculo con cada cliente.
           </p>
         </div>
 
@@ -106,7 +136,7 @@ export default function Features() {
               className={`feature-card reveal-up rounded-2xl border border-brand-950/10 dark:border-white/10 bg-white dark:bg-white/[0.04] p-6 hover:shadow-2xl hover:shadow-brand-600/10 ${extraClass ?? ""}`}
             >
               {badge && (
-                <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded-full bg-amber-500/15 text-amber-600">
+                <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded-full bg-brand-600/15 text-brand-600 dark:text-brand-300">
                   {badge}
                 </span>
               )}
