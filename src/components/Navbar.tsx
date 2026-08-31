@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 import CtaLink from "./CtaLink";
+import { CLIENTES_URL, CONTADORES_LOGIN_URL, CONTADORES_URL } from "../lib/urls";
 
 const NAV_LINKS = [
   { href: "#producto", label: "Producto" },
@@ -115,7 +116,7 @@ export default function Navbar() {
             </button>
             <div className="hidden lg:flex items-center gap-2">
               <a
-                href="https://contadores.kontari.com"
+                href={CONTADORES_URL}
                 title="Acceso contadores"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-2 rounded-full border border-brand-950/15 dark:border-white/20 hover:bg-brand-950/5 dark:hover:bg-white/10 transition"
               >
@@ -123,7 +124,7 @@ export default function Navbar() {
                 <span className="hidden xl:inline">Contadores</span>
               </a>
               <a
-                href="https://clientes.kontari.com"
+                href={CLIENTES_URL}
                 title="Acceso clientes"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-2 rounded-full border border-brand-950/15 dark:border-white/20 hover:bg-brand-950/5 dark:hover:bg-white/10 transition"
               >
@@ -132,7 +133,7 @@ export default function Navbar() {
               </a>
             </div>
             <CtaLink
-              href="/auth/login"
+              href={CONTADORES_LOGIN_URL}
               className="inline-flex items-center gap-1.5 text-sm font-semibold bg-brand-600 hover:bg-brand-700 text-white px-4 py-2.5 rounded-full shadow-lg shadow-brand-600/30 hover:shadow-brand-600/50 hover:-translate-y-0.5 transition-all"
             >
               Empezar gratis <ArrowRight className="w-4 h-4" />
@@ -187,19 +188,19 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://contadores.kontari.com"
+            href={CONTADORES_URL}
             className="py-3 opacity-70 flex items-center gap-2"
           >
             <Briefcase className="w-4 h-4" /> Acceso contadores
           </a>
           <a
-            href="https://clientes.kontari.com"
+            href={CLIENTES_URL}
             className="py-3 opacity-70 flex items-center gap-2"
           >
             <User className="w-4 h-4" /> Acceso clientes
           </a>
           <a
-            href="/auth/login"
+            href={CONTADORES_LOGIN_URL}
             className="mt-3 text-center bg-brand-600 text-white rounded-full py-3"
           >
             Empezar gratis

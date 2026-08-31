@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import CtaLink from "./CtaLink";
+import { CONTADORES_LOGIN_URL } from "../lib/urls";
 
 export default function FinalCta() {
   return (
@@ -17,7 +18,7 @@ export default function FinalCta() {
               Kontari.
             </p>
             <CtaLink
-              href="/auth/login"
+              href={CONTADORES_LOGIN_URL}
               className="mt-8 inline-flex items-center gap-2 bg-white text-brand-950 font-bold px-7 py-4 rounded-full hover:-translate-y-0.5 hover:shadow-2xl transition-all"
             >
               Empezar prueba gratis de 14 días

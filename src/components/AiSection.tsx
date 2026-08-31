@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import CtaLink from "./CtaLink";
+import { CONTADORES_LOGIN_URL } from "../lib/urls";
 
 type Capability = {
   icon: LucideIcon;
@@ -187,7 +188,7 @@ export default function AiSection() {
 
         <div className="mt-12 text-center reveal-up">
           <CtaLink
-            href="/auth/login"
+            href={CONTADORES_LOGIN_URL}
             className="group inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3.5 rounded-full shadow-xl shadow-brand-600/30 hover:shadow-brand-600/50 hover:-translate-y-0.5 transition-all"
           >
             <Sparkles className="w-4 h-4" />

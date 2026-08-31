@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Counter from "./Counter";
 import CtaLink from "./CtaLink";
+import { CONTADORES_LOGIN_URL } from "../lib/urls";
 
 const MARQUEE_ITEMS = [
   "AFIP / ARCA",
@@ -60,7 +61,7 @@ export default function Hero() {
 
           <div className="reveal-up mt-9 flex flex-wrap items-center gap-4">
             <CtaLink
-              href="/auth/login"
+              href={CONTADORES_LOGIN_URL}
               className="group inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3.5 rounded-full shadow-xl shadow-brand-600/30 hover:shadow-brand-600/50 hover:-translate-y-0.5 transition-all"
             >
               Empezar prueba gratis de 14 días
@@ -104,7 +105,7 @@ export default function Hero() {
               <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
               <span className="ml-3 text-xs opacity-50 font-mono">
-                app.kontari.com/dashboard
+                contadores.kontari.com.ar
               </span>
             </div>
             <div className="p-5 grid grid-cols-2 gap-3">

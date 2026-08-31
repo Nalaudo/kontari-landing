@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Check, TrendingDown } from "lucide-react";
 import TiltCard from "./TiltCard";
 import CtaLink from "./CtaLink";
+import { contadoresLoginWithTier } from "../lib/urls";
 
 type Cycle = "monthly" | "quarterly" | "yearly";
 
@@ -197,7 +198,10 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <CtaLink href={`/auth/login?tier=${t.key}`} className={ctaClass}>
+                <CtaLink
+                  href={contadoresLoginWithTier(t.key)}
+                  className={ctaClass}
+                >
                   Empezar prueba gratis
                 </CtaLink>
               </TiltCard>
