@@ -15,6 +15,7 @@ import FinalCta from "./components/FinalCta";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import CookieBanner from "./components/CookieBanner";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   useScrollReveal();
@@ -41,6 +42,7 @@ export default function App() {
       <Footer />
       <BackToTop />
       <CookieBanner />
+      <Analytics />
     </>
   );
 }
