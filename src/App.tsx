@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import CookieBanner from "./components/CookieBanner";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 export default function App() {
   useScrollReveal();
@@ -43,6 +44,7 @@ export default function App() {
       <BackToTop />
       <CookieBanner />
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
