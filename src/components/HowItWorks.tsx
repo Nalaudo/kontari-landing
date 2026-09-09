@@ -17,7 +17,7 @@ const STEPS = [
   {
     n: 4,
     title: "Gestioná todo",
-    desc: "Documentos, vencimientos, equipo y pagos en un dashboard, con un asistente de IA que responde y redacta por vos.",
+    desc: "IVA, contabilidad, honorarios, vencimientos, documentos y equipo en un dashboard, con un asistente de IA que responde y redacta por vos.",
   },
 ];
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Política de Privacidad — Kontari</title>
 <meta name="description" content="Política de Privacidad de Kontari." />
-<link rel="icon" href="/assets/kontari-pila.svg" type="image/svg+xml" />
+<link rel="icon" href="/assets/k-logo.svg" type="image/svg+xml" />
 <style>
 :root{--bg:#f5f6fb;--surface:#fff;--text:#141833;--muted:#5b6178;--border:#e3e6f0;--brand:#3142b8;--warn-bg:#fff7ed;--warn-bd:#fed7aa;--warn-tx:#7c2d12}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1230;--surface:#171a3a;--text:#e8eaf6;--muted:#a2a8c8;--border:#2a2e55;--brand:#93a3f0;--warn-bg:#2a1e12;--warn-bd:#5c3d1f;--warn-tx:#fbbf77}}
@@ -49,7 +49,7 @@ footer.site .wrap{max-width:760px;margin:0 auto;padding:20px 24px;color:var(--mu
 </header>
 <main>
   <h1>Política de Privacidad</h1>
-  <p class="meta">Última actualización: 30 de agosto de 2026 · Versión 1.0</p>
+  <p class="meta">Última actualización: 3 de septiembre de 2026 · Versión 2.0</p>
   <div class="notice"><strong>Borrador pendiente de completar.</strong> Reemplazá los marcadores entre corchetes (<code>[RAZÓN SOCIAL]</code>, <code>[CUIT]</code>, <code>[DOMICILIO LEGAL]</code>, <code>[EMAIL DE CONTACTO]</code>, <code>[JURISDICCIÓN]</code>, etc.) con los datos reales antes de publicar. Ver <code>legal/README.md</code> en el repositorio.</div>
 
 <p>Esta Política explica cómo <strong>[RAZÓN SOCIAL]</strong>, CUIT <strong>[CUIT]</strong>, con domicilio en <strong>[DOMICILIO LEGAL]</strong> (<strong>“Kontari”</strong>), trata los datos personales en el marco de la plataforma <strong>Kontari</strong> (el <strong>“Servicio”</strong>), conforme a la <strong>Ley N.º 25.326</strong> de Protección de los Datos Personales, su Decreto N.º 1558/2001 y las disposiciones de la <strong>Agencia de Acceso a la Información Pública (“AAIP”)</strong>.</p>
@@ -65,30 +65,50 @@ footer.site .wrap{max-width:760px;margin:0 auto;padding:20px 24px;color:var(--mu
 <h3>3.1. Datos que nos proporcionás</h3>
 <ul>
 <li><strong>De registro y cuenta:</strong> nombre y apellido o razón social, correo electrónico, CUIT, teléfono (opcional), rol dentro del estudio.</li>
-<li><strong>De facturación:</strong> condición frente al IVA, domicilio fiscal, datos necesarios para emitir el comprobante. Los pagos se procesan por <strong>Mercado Pago</strong>; Kontari no recibe ni almacena el número completo de tarjeta.</li>
+<li><strong>De facturación:</strong> condición frente al IVA, domicilio fiscal, datos necesarios para emitir el comprobante. Los pagos se procesan por <strong>Mercado Pago</strong>; Kontari no recibe ni almacena el número completo de tarjeta (solo, para mostrártelo, los últimos cuatro dígitos y el medio de pago).</li>
 <li><strong>De soporte y comunicaciones:</strong> el contenido de los mensajes que nos enviás y de los chats y reuniones dentro del Servicio.</li>
 <li><strong>Contenido del Usuario:</strong> documentos, tareas, datos de clientes, impuestos y demás información que cargás (ver cláusula 2).</li>
 </ul>
 <h3>3.2. Datos que se recopilan automáticamente</h3>
 <ul>
-<li><strong>Datos técnicos y de uso:</strong> dirección IP, tipo de navegador y dispositivo, sistema operativo, fecha y hora, páginas y acciones dentro del Servicio, identificadores de sesión, registros de errores.</li>
+<li><strong>Datos técnicos y de uso:</strong> dirección IP, tipo de navegador y dispositivo, sistema operativo, fecha y hora, páginas y acciones dentro del Servicio, identificadores de sesión, registros de errores y de seguridad (bitácora de accesos y operaciones sensibles).</li>
 <li><strong>Cookies y tecnologías similares:</strong> ver la <a href="/legal/cookies.html">Política de Cookies</a>. Kontari no utiliza cookies de analítica de terceros ni de publicidad.</li>
 </ul>
+<h3>3.3. Secretos que guardamos cifrados</h3>
+<ul>
+<li><strong>Claves fiscales de los clientes del Contador.</strong> Si el Contador usa esta función, las claves se <strong>cifran de extremo a extremo en su propio dispositivo</strong> con una <strong>Clave Maestra que solo él conoce</strong>, antes de llegar a Kontari. <strong>Kontari no conoce esa Clave Maestra y no puede descifrar ni leer esas claves fiscales.</strong></li>
+<li><strong>Tokens de conexión que autorizás</strong> (tu propia cuenta de Mercado Pago para cobrar honorarios, tu cuenta de mensajería) y el <strong>secreto de tu segundo factor</strong>: se guardan cifrados en reposo (AES-256-GCM) y se usan solo para las funciones que activaste.</li>
+</ul>
+<h3>3.4. Datos de terceros</h3>
+<p>Los proveedores de infraestructura pueden aportarnos información técnica de seguridad (p. ej. detección de abuso).</p>
 <p>No solicitamos datos sensibles (art. 2 Ley 25.326) para la operación del Servicio. Si el Contenido del Usuario incluyera datos sensibles de terceros, su tratamiento queda bajo responsabilidad del Contador conforme al Anexo.</p>
 
 <h2>4. Con qué finalidad y base de licitud</h2>
 <div class="tablewrap"><table><thead><tr><th>Finalidad</th><th>Base de licitud (Ley 25.326)</th></tr></thead><tbody>
-<tr><td>Crear y administrar tu cuenta; autenticarte por magic link</td><td>Ejecución de la relación contractual (art. 5 inc. 2.a)</td></tr>
-<tr><td>Prestar, mantener y mejorar el Servicio</td><td>Ejecución contractual / interés legítimo</td></tr>
+<tr><td>Crear y administrar tu cuenta; autenticarte por magic link y 2FA</td><td>Ejecución de la relación contractual (art. 5 inc. 2.a)</td></tr>
+<tr><td>Prestar, mantener, resguardar y mejorar el Servicio y sus funcionalidades</td><td>Ejecución contractual / interés legítimo</td></tr>
 <tr><td>Procesar pagos y emitir comprobantes</td><td>Ejecución contractual y obligación legal (normativa AFIP-ARCA)</td></tr>
 <tr><td>Brindar soporte y responder consultas</td><td>Ejecución contractual / consentimiento</td></tr>
 <tr><td>Enviar avisos operativos (cambios de términos, seguridad, vencimientos, facturación)</td><td>Ejecución contractual / obligación legal</td></tr>
+<tr><td>Prestar las funciones de inteligencia artificial (solo si tu estudio las activa)</td><td>Consentimiento (revocable en cualquier momento)</td></tr>
+<tr><td>Prestar las funciones de mensajería por WhatsApp (solo si tu estudio las activa)</td><td>Consentimiento / ejecución contractual</td></tr>
 <tr><td>Enviar novedades y comunicaciones comerciales de Kontari</td><td>Consentimiento (revocable en cualquier momento)</td></tr>
+<tr><td>Elaborar métricas y estadísticas del Servicio en forma agregada y anonimizada</td><td>Interés legítimo</td></tr>
 <tr><td>Prevenir fraude, abuso y garantizar la seguridad</td><td>Interés legítimo / obligación legal</td></tr>
 <tr><td>Cumplir requerimientos de autoridades y ejercer o defender derechos</td><td>Obligación legal</td></tr>
 </tbody></table></div>
 
-<h2>5. Cuánto tiempo conservamos los datos</h2>
+<h2>5. Qué NO hacemos con tu información</h2>
+<ul>
+<li><strong>No vendemos, alquilamos, cedemos ni publicamos</strong> tus datos ni el Contenido del Usuario a terceros para fines propios de esos terceros.</li>
+<li><strong>No los usamos para publicidad</strong>, marketing de terceros ni elaboración de perfiles comerciales.</li>
+<li><strong>No entrenamos, ajustamos ni evaluamos modelos de inteligencia artificial</strong> (propios ni de terceros) con tus datos ni con el Contenido del Usuario.</li>
+<li><strong>No cruzamos ni combinamos</strong> la información de un estudio con la de otro.</li>
+<li>El <strong>personal de Kontari</strong> accede a la información solo con alcance mínimo indispensable, en forma nominada, bajo deber de confidencialidad subsistente y dejando registro en la bitácora de seguridad, y únicamente para operar el Servicio, darte soporte, atender la seguridad o cumplir una obligación legal.</li>
+<li><strong>No accedemos a las claves fiscales</strong> cifradas de extremo a extremo: no tenemos capacidad técnica para hacerlo.</li>
+</ul>
+
+<h2>6. Cuánto tiempo conservamos los datos</h2>
 <ul>
 <li><strong>Datos de cuenta y Contenido del Usuario:</strong> mientras la cuenta esté activa y hasta <strong>[PLAZO CONSERVACIÓN] meses</strong> después de la baja, salvo supresión anticipada o norma que exija conservarlos más tiempo.</li>
 <li><strong>Datos de facturación y comprobantes:</strong> por el plazo que exige la normativa fiscal y comercial (hasta 10 años).</li>
@@ -97,22 +117,22 @@ footer.site .wrap{max-width:760px;margin:0 auto;padding:20px 24px;color:var(--mu
 </ul>
 <p>Vencidos los plazos, los datos se eliminan o se anonimizan de forma irreversible.</p>
 
-<h2>6. Con quién compartimos los datos</h2>
+<h2>7. Con quién compartimos los datos</h2>
 <p>Kontari no vende datos personales. Los comparte únicamente con:</p>
 <ul>
-<li><strong>Encargados / proveedores que actúan por cuenta de Kontari:</strong> Vercel Inc. (hosting/CDN, EE. UU.); proveedor de base de datos PostgreSQL administrada; Resend (correos transaccionales); Mercado Pago / MercadoLibre S.R.L. (pagos y suscripciones); proveedor de videollamadas; herramientas de soporte y monitoreo de errores.</li>
+<li><strong>Encargados / proveedores que actúan por cuenta de Kontari y solo para prestar el Servicio:</strong> Vercel Inc. (hosting, CDN, ejecución de la aplicación y almacenamiento de los archivos que se cargan en el Servicio, EE. UU.); Supabase, Inc. (base de datos PostgreSQL administrada, EE. UU.; región [COMPLETAR]); Resend, Inc. (correos transaccionales, EE. UU.); Mercado Pago / MercadoLibre S.R.L. (pagos y suscripciones, Argentina); Jitsi Meet ([COMPLETAR: 8x8, Inc. — meet.jit.si / servidor propio], videollamadas); Meta Platforms (WhatsApp Business Cloud API — solo si tu estudio activa esa función); Vercel AI Gateway y, a través suyo, OpenAI, L.L.C. y Google LLC — funciones de inteligencia artificial, solo si tu estudio activa la IA en Configuración; los datos enviados se procesan para responder la consulta puntual y <strong>no se utilizan para entrenar modelos</strong>. Herramientas de soporte y de monitoreo de errores, cuando correspondan.</li>
 <li><strong>Autoridades públicas</strong> competentes, ante un requerimiento legal.</li>
 <li><strong>Terceros en una reorganización societaria</strong> (fusión, adquisición, venta de activos), informándote previamente.</li>
 </ul>
-<p>Con cada encargado se celebran acuerdos que exigen niveles de protección adecuados y el uso de los datos sólo para prestar el servicio contratado.</p>
+<p><strong>Nunca compartimos las claves fiscales cifradas de extremo a extremo, porque no podemos descifrarlas.</strong> Con cada encargado se celebran acuerdos que exigen niveles de protección adecuados y el uso de los datos sólo para prestar el servicio contratado.</p>
 
-<h2>7. Transferencias internacionales</h2>
-<p>Algunos proveedores (p. ej. Vercel, Resend) están ubicados fuera de la Argentina, principalmente en <strong>Estados Unidos</strong>. Cuando el país de destino no sea considerado de protección adecuada por la AAIP, la transferencia se ampara en cláusulas contractuales con obligaciones equivalentes a la Ley 25.326 o en alguna de las excepciones de su art. 12 (entre ellas, la ejecución del contrato con vos).</p>
+<h2>8. Transferencias internacionales</h2>
+<p>Algunos proveedores (p. ej. Vercel, Supabase, Resend y, si se activan, los de IA) están ubicados fuera de la Argentina, principalmente en <strong>Estados Unidos</strong>. Cuando el país de destino no sea considerado de protección adecuada por la AAIP, la transferencia se ampara en cláusulas contractuales con obligaciones equivalentes a la Ley 25.326 o en alguna de las excepciones de su art. 12 (entre ellas, la ejecución del contrato con vos).</p>
 
-<h2>8. Seguridad</h2>
-<p>Kontari aplica medidas técnicas y organizativas razonables acordes al estado de la técnica y a la normativa de la AAIP: cifrado en tránsito (HTTPS/TLS), control de acceso por roles y permisos, autenticación sin contraseña por enlace de un solo uso, aislamiento de datos por cuenta, registros de auditoría, copias de seguridad y revisión de accesos. Ante un incidente de seguridad que afecte datos personales, Kontari lo comunicará a los usuarios afectados y a la AAIP cuando corresponda, sin dilación indebida.</p>
+<h2>9. Seguridad</h2>
+<p>Kontari aplica medidas técnicas y organizativas razonables acordes al estado de la técnica y a la normativa de la AAIP, entre ellas: cifrado en tránsito (HTTPS/TLS); <strong>cifrado de extremo a extremo de las claves fiscales</strong> con una Clave Maestra que solo conoce el Contador; <strong>cifrado en reposo (AES-256-GCM)</strong> de los tokens de conexión y del secreto de segundo factor; control de acceso por roles y permisos con mínimo privilegio; autenticación sin contraseña por enlace de un solo uso y 2FA opcional; aislamiento de datos por cuenta; <strong>bitácora de auditoría</strong> de accesos y operaciones sensibles; límites de tasa (<em>rate limiting</em>); copias de seguridad y revisión de accesos. Ningún sistema es completamente infalible; ante un incidente de seguridad que afecte datos personales, Kontari lo comunicará a los usuarios afectados y a la AAIP cuando corresponda, sin dilación indebida.</p>
 
-<h2>9. Tus derechos</h2>
+<h2>10. Tus derechos</h2>
 <p>Como titular de los datos podés ejercer los derechos de <strong>acceso, rectificación, actualización y supresión</strong> de tus datos personales, así como <strong>oponerte</strong> a determinados tratamientos y <strong>revocar</strong> consentimientos.</p>
 <ul>
 <li><strong>Cómo:</strong> escribí a <strong>[EMAIL DE PRIVACIDAD]</strong> desde el correo registrado, o usá las opciones de tu perfil dentro del Servicio.</li>
@@ -123,16 +143,16 @@ footer.site .wrap{max-width:760px;margin:0 auto;padding:20px 24px;color:var(--mu
 <p><strong>Autoridad de control.</strong> Si considerás que tus derechos no fueron atendidos, podés reclamar ante la <strong>Agencia de Acceso a la Información Pública</strong> (Av. Pte. Julio A. Roca 710, Piso 2, CABA — argentina.gob.ar/aaip).</p>
 <blockquote>La AAIP, Órgano de Control de la Ley N.º 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</blockquote>
 
-<h2>10. Datos de niñas, niños y adolescentes</h2>
+<h2>11. Datos de niñas, niños y adolescentes</h2>
 <p>El Servicio está dirigido a profesionales y no está destinado a menores de 18 años. No recopilamos deliberadamente sus datos. Si un Contador carga datos de menores como parte del Contenido del Usuario, es responsable de contar con la base legal correspondiente.</p>
 
-<h2>11. Decisiones automatizadas</h2>
-<p>Kontari no adopta decisiones que produzcan efectos jurídicos sobre las personas basadas únicamente en tratamientos automatizados de sus datos.</p>
+<h2>12. Decisiones automatizadas e inteligencia artificial</h2>
+<p>Kontari no adopta decisiones que produzcan efectos jurídicos sobre las personas basadas únicamente en tratamientos automatizados de sus datos. Las funciones de inteligencia artificial (si el estudio las activa) generan <strong>borradores y sugerencias que requieren revisión y decisión humana</strong> del profesional y no producen efectos jurídicos por sí solas.</p>
 
-<h2>12. Cambios a esta Política</h2>
+<h2>13. Cambios a esta Política</h2>
 <p>Podemos actualizar esta Política. Los cambios sustanciales se notificarán al correo registrado y/o dentro del Servicio con al menos <strong>diez (10) días corridos</strong> de antelación.</p>
 
-<h2>13. Contacto</h2>
+<h2>14. Contacto</h2>
 <p><strong>[RAZÓN SOCIAL]</strong> — CUIT [CUIT]<br />Domicilio: [DOMICILIO LEGAL]<br />Privacidad y derechos: <strong>[EMAIL DE PRIVACIDAD]</strong><br />Contacto general: [EMAIL DE CONTACTO]</p>
 
   <hr />

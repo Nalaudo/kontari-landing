@@ -30,16 +30,21 @@ const TIERS: Tier[] = [
     key: "solo",
     name: "Solo",
     tagline: "Para el contador que gestiona su propia cartera",
-    monthly: 12000,
-    quarterly: 30000,
-    yearly: 120000,
+    monthly: 20000,
+    quarterly: 50000,
+    yearly: 200000,
     features: [
       "Cartera de clientes sin límite estricto",
       "Autocompletado AFIP/ARCA por CUIT",
       "Bóveda de claves fiscales cifradas",
       "Impuestos y vencimientos por cliente",
+      "Libro IVA Digital, liquidación (F2051) y retenciones SICORE",
+      "Contabilidad: diario, mayor, balances y cierre de ejercicio",
+      "Facturación electrónica ARCA con CAE + honorarios con cobro online",
       "Tareas, plantillas recurrentes y calendario",
       "Documentos por cliente, vinculados a tareas e impuestos",
+      "Firma electrónica de documentos",
+      "Asistente de IA integrado (opt-in)",
       "Reportes de productividad y rentabilidad",
       "1 profesional",
     ],
@@ -48,9 +53,9 @@ const TIERS: Tier[] = [
     key: "estudio",
     name: "Estudio",
     tagline: "Para estudios que trabajan en equipo",
-    monthly: 21000,
-    quarterly: 53000,
-    yearly: 210000,
+    monthly: 36000,
+    quarterly: 90000,
+    yearly: 360000,
     featured: true,
     badge: "Más elegido",
     features: [
@@ -67,14 +72,16 @@ const TIERS: Tier[] = [
     key: "portal",
     name: "Portal",
     tagline: "Sumá a tus clientes a la plataforma",
-    monthly: 34000,
-    quarterly: 85000,
-    yearly: 340000,
+    monthly: 58000,
+    quarterly: 145000,
+    yearly: 580000,
     features: [
       "Todo lo del plan Estudio",
+      "Profesionales ilimitados con roles y permisos",
       "App propia para tus clientes",
       "Chat con cada cliente",
       "Tus clientes suben documentación y ven sus vencimientos",
+      "Reuniones con videollamada + feed de calendario iCal",
       "Onboarding de clientes guiado",
     ],
   },
@@ -218,6 +225,10 @@ export default function Pricing() {
           >
             ¿Más de 3 profesionales? Escribinos
           </a>
+        </p>
+        <p className="reveal-up text-center text-xs opacity-40 mt-2">
+          Los precios se actualizan trimestralmente según la variación del
+          IPC.
         </p>
       </div>
     </section>
