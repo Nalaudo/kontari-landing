@@ -11,18 +11,6 @@ import Counter from "./Counter";
 import CtaLink from "./CtaLink";
 import { CONTADORES_LOGIN_URL } from "../lib/urls";
 
-const MARQUEE_ITEMS = [
-  "AFIP / ARCA",
-  "Libro IVA Digital",
-  "Contabilidad",
-  "Facturación electrónica",
-  "Asistente de IA",
-  "Mercado Pago",
-  "Cifrado AES-256-GCM",
-  "PBKDF2 600.000 iteraciones",
-  "Multi-usuario",
-];
-
 export default function Hero() {
   return (
     <section
@@ -183,18 +171,6 @@ export default function Hero() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Marquee */}
-      <div className="marquee-wrap mt-20 border-y border-brand-950/10 dark:border-white/10 py-5 overflow-hidden">
-        <div className="marquee-track flex gap-12 w-max text-sm font-semibold uppercase tracking-widest opacity-50">
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
-            <span key={i} className="flex items-center gap-12">
-              <span>{item}</span>
-              <span aria-hidden="true">•</span>
-            </span>
-          ))}
         </div>
       </div>
     </section>

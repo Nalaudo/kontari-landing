@@ -2,7 +2,6 @@ import { useScrollReveal } from "./hooks/useScrollReveal";
 import CursorGlow from "./components/CursorGlow";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Stats from "./components/Stats";
 import ProblemSolution from "./components/ProblemSolution";
 import Features from "./components/Features";
 import AiSection from "./components/AiSection";
@@ -28,7 +27,6 @@ export default function App() {
 
       <main id="top" className="relative">
         <Hero />
-        <Stats />
         <ProblemSolution />
         <Features />
         <AiSection />

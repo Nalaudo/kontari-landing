@@ -20,7 +20,6 @@
 
   --animate-blob: blob 14s infinite ease-in-out;
   --animate-float: float 6s ease-in-out infinite;
-  --animate-marquee: marquee 28s linear infinite;
   --animate-shimmer: shimmer 2.5s linear infinite;
 
   @keyframes blob {
@@ -42,14 +41,6 @@
     }
     50% {
       transform: translateY(-14px);
-    }
-  }
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
     }
   }
   @keyframes shimmer {
@@ -228,14 +219,6 @@
 /* Reveal defaults (GSAP will animate from these) */
 .reveal {
   opacity: 1;
-}
-
-/* Marquee row duplicate trick */
-.marquee-track {
-  animation: marquee 26s linear infinite;
-}
-.marquee-wrap:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 /* Pricing highlight ring glow */

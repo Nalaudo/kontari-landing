@@ -47,7 +47,7 @@ export default function CookieBanner() {
             href="/legal/cookies.html"
             className="font-semibold text-brand-600 underline underline-offset-2 dark:text-brand-300"
           >
-            Más información
+            Leer la política de cookies completa
           </a>
           .
         </p>
