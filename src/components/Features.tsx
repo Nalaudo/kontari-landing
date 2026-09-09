@@ -1,5 +1,8 @@
 import {
+  BookOpenCheck,
+  CalendarClock,
   Clock,
+  FileCheck2,
   FolderTree,
   Landmark,
   LayoutDashboard,
@@ -7,10 +10,13 @@ import {
   LockKeyhole,
   Megaphone,
   MessagesSquare,
+  PenLine,
+  Receipt,
   SearchCheck,
   Sparkles,
   UserCog,
   Users,
+  Wallet,
   type LucideIcon,
 } from "lucide-react";
 import TiltCard from "./TiltCard";
@@ -59,10 +65,42 @@ const FEATURES: Feature[] = [
     desc: "Calendario de obligaciones por cliente y por terminación de CUIT, con alertas automáticas para no perderte ninguna presentación.",
   },
   {
+    icon: Receipt,
+    tone: "brand",
+    title: "IVA y liquidación",
+    desc: "Importás los comprobantes desde Mis Comprobantes y Kontari arma el Libro IVA Digital, calcula la liquidación mensual (renglones F2051) y registra retenciones y percepciones (SICORE). Tablero de Monotributo con recategorización.",
+  },
+  {
+    icon: BookOpenCheck,
+    tone: "emerald",
+    title: "Contabilidad completa",
+    desc: "Plan de cuentas, libro diario con asientos automáticos desde el IVA, mayor, sumas y saldos, bienes de uso con amortización, conciliación bancaria y estados contables con cierre de ejercicio.",
+    extraClass: "lg:col-span-2 relative overflow-hidden",
+    badge: "Nuevo",
+  },
+  {
+    icon: FileCheck2,
+    tone: "brand",
+    title: "Facturación electrónica ARCA",
+    desc: "Emití comprobantes A, B, C y E con CAE real contra los web services de ARCA (WSFEv1 / WSCT), con puntos de venta y numeración por entidad.",
+  },
+  {
+    icon: Wallet,
+    tone: "emerald",
+    title: "Honorarios y cobranza",
+    desc: "Facturá los honorarios de tu estudio, llevá la cuenta corriente de cada cliente y cobrá online con un link a tu propia cuenta de Mercado Pago.",
+  },
+  {
     icon: FolderTree,
     tone: "brand",
     title: "Documentos por cliente",
     desc: "Repositorio de la documentación de cada cliente —balances, constancias, facturas, recibos— organizada en carpetas y vinculada a sus tareas e impuestos.",
+  },
+  {
+    icon: PenLine,
+    tone: "emerald",
+    title: "Firma electrónica de documentos",
+    desc: "Enviá documentos a la firma del cliente y recibí el PDF con constancia de firma (fecha, IP y hash SHA-256). Sumá pedidos de documentación recurrentes.",
   },
   {
     icon: LayoutGrid,
@@ -84,6 +122,13 @@ const FEATURES: Feature[] = [
     desc: "Registrá horas por cliente y tarea, y visualizá la carga real de cada integrante para repartir mejor el trabajo.",
   },
   {
+    icon: CalendarClock,
+    tone: "brand",
+    title: "Reuniones y calendario",
+    desc: "Agendá videollamadas con link de Jitsi automático, invitaciones por email y archivo .ics. Feed iCal del estudio —vencimientos, tareas y reuniones— suscribible desde cualquier app de calendario.",
+    badge: "Plan Portal",
+  },
+  {
     icon: MessagesSquare,
     tone: "brand",
     title: "Portal y chat con tus clientes",
@@ -95,13 +140,13 @@ const FEATURES: Feature[] = [
     icon: Megaphone,
     tone: "emerald",
     title: "Comunicaciones y campañas",
-    desc: "Segmentá tu cartera y enviá campañas de email con plantillas reutilizables.",
+    desc: "Segmentá tu cartera y enviá campañas por email y WhatsApp con plantillas reutilizables. Notificaciones in-app, push y resumen por correo.",
   },
   {
     icon: LayoutDashboard,
     tone: "brand",
     title: "Dashboard y reportes",
-    desc: "Clientes activos, pendientes, vencimientos e ingresos del mes. Reportes de productividad, rentabilidad y riesgo de cartera.",
+    desc: "Clientes activos, pendientes, vencimientos e ingresos del mes. Seis reportes (productividad, rentabilidad, riesgo de cartera y más) con vistas guardadas y búsqueda global.",
   },
 ];
 

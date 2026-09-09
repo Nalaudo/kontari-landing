@@ -23,6 +23,18 @@ const FAQS = [
     a: "La IA viene desactivada: la habilita un administrador del estudio desde Configuración. Cuando está activa, los datos necesarios de cada consulta se envían al proveedor del modelo (a través de Vercel AI Gateway) únicamente para responder esa consulta; no se usan para entrenar modelos. El proveedor está declarado en la política de privacidad y podés desactivar la función cuando quieras.",
   },
   {
+    q: "¿Kontari maneja el IVA y la contabilidad?",
+    a: "Sí. Importás los comprobantes de compras y ventas desde Mis Comprobantes y Kontari arma el Libro IVA Digital, la liquidación mensual (renglones F2051) y las retenciones y percepciones (SICORE), más el tablero de Monotributo. Sobre esos mismos comprobantes genera la contabilidad: plan de cuentas, libro diario con asientos automáticos, mayor, sumas y saldos, bienes de uso, conciliación bancaria y estados contables con cierre de ejercicio.",
+  },
+  {
+    q: "¿Kontari emite facturas electrónicas?",
+    a: "Sí. Además de la facturación interna de honorarios del estudio (con cobro por link de Mercado Pago), podés emitir comprobantes electrónicos A, B, C y E con CAE real contra los web services de ARCA (WSFEv1 / WSCT). La emisión fiscal la habilita un administrador y requiere que el contribuyente delegue el servicio en ARCA.",
+  },
+  {
+    q: "¿Puedo agendar reuniones con mis clientes desde Kontari?",
+    a: "Con el plan Portal, sí: agendás videollamadas con link de Jitsi generado automáticamente, se envían invitaciones por email con archivo .ics y hay un feed iCal del estudio (vencimientos, tareas y reuniones) que podés suscribir desde Google Calendar, Outlook o cualquier app de calendario.",
+  },
+  {
     q: "¿Qué diferencia a cada plan?",
     a: "Solo es para un contador que gestiona su cartera puertas adentro. Estudio suma trabajo en equipo: hasta 3 profesionales con roles y permisos, organigrama, registro de tiempos y capacidad. Portal agrega la app para tus clientes, con chat y carga de documentación de su lado.",
   },
@@ -40,7 +52,7 @@ const FAQS = [
   },
   {
     q: "¿Kontari reemplaza mi sistema de facturación?",
-    a: "No. Kontari se especializa en la gestión de clientes, datos fiscales, tareas y documentación de tu estudio, y se integra con tu flujo de trabajo actual.",
+    a: "Kontari cubre el circuito impositivo y contable (IVA, liquidación, retenciones, contabilidad) y puede emitir facturas electrónicas con CAE, además de la facturación de honorarios del estudio. Si ya usás otro sistema, Kontari se integra con tu flujo cargando los comprobantes desde Mis Comprobantes.",
   },
 ];
 

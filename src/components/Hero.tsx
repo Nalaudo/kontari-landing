@@ -13,12 +13,14 @@ import { CONTADORES_LOGIN_URL } from "../lib/urls";
 
 const MARQUEE_ITEMS = [
   "AFIP / ARCA",
+  "Libro IVA Digital",
+  "Contabilidad",
+  "Facturación electrónica",
   "Asistente de IA",
   "Mercado Pago",
   "Cifrado AES-256-GCM",
   "PBKDF2 600.000 iteraciones",
   "Multi-usuario",
-  "Next.js",
 ];
 
 export default function Hero() {
@@ -51,8 +53,9 @@ export default function Hero() {
           </h1>
 
           <p className="reveal-up mt-6 text-lg text-brand-950/70 dark:text-slate-300 max-w-xl">
-            Kontari centraliza clientes, AFIP/ARCA, claves fiscales, tareas y
-            documentación en una sola plataforma, con un{" "}
+            Kontari centraliza clientes, AFIP/ARCA, claves fiscales, IVA,
+            contabilidad, honorarios, tareas y documentación en una sola
+            plataforma, con un{" "}
             <span className="font-semibold text-brand-700 dark:text-brand-200">
               asistente de IA
             </span>{" "}

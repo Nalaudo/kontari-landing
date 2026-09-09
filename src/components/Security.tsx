@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowDown, EyeOff, KeyRound, Lock, Shield, ShieldCheck } from "lucide-react";
+import { ArrowDown, EyeOff, KeyRound, Lock, Shield, ShieldCheck, Smartphone } from "lucide-react";
 
 const CIPHER_CHARS = "ABCDEF0123456789+/=";
 
@@ -31,10 +31,16 @@ const POINTS = [
     desc: "Ni siquiera el equipo de Kontari puede leer las claves fiscales en texto plano.",
   },
   {
-    icon: ShieldCheck,
+    icon: Smartphone,
     tone: "brand" as const,
+    title: "Doble factor (2FA)",
+    desc: "Verificación en dos pasos con app de autenticación y códigos de respaldo para blindar el acceso a la bóveda.",
+  },
+  {
+    icon: ShieldCheck,
+    tone: "emerald" as const,
     title: "Sesiones y accesos controlados",
-    desc: "Autenticación segura y permisos granulares por rol de usuario.",
+    desc: "Autenticación segura, rate-limiting y permisos granulares por rol de usuario, con registro de eventos de seguridad.",
   },
 ];
 

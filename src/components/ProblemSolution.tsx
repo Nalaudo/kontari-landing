@@ -3,14 +3,14 @@ import { CheckCircle2, Frown, Smile, XCircle } from "lucide-react";
 const WITHOUT = [
   "Planillas de Excel desactualizadas repartidas entre varias personas",
   "Claves fiscales guardadas en post-its, WhatsApp o Word sin protección",
-  "Buscar vencimientos y presentaciones a mano, cliente por cliente",
+  "Liquidar el IVA y rehacer los asientos contables a mano todos los meses",
   "Documentación de cada cliente desperdigada entre mails, WhatsApp y carpetas",
 ];
 
 const WITH = [
   "Un solo dashboard con todos tus clientes activos y su estado real",
   "Bóveda de claves fiscales cifrada de extremo a extremo",
-  "Datos de AFIP/ARCA autocompletados con solo ingresar el CUIT",
+  "IVA, contabilidad y facturación electrónica sobre los mismos comprobantes",
   "Vencimientos, tareas y documentos de cada cliente en un mismo lugar",
 ];
 
