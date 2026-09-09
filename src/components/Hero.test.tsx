@@ -7,7 +7,10 @@ describe("<Hero>", () => {
   it("renders the headline and value proposition", () => {
     render(<Hero />);
     expect(
-      screen.getByRole("heading", { level: 1, name: /tu estudio contable/i }),
+      screen.getByRole("heading", {
+        level: 1,
+        name: /software de gestión para tu estudio contable/i,
+      }),
     ).toBeInTheDocument();
   });
 

@@ -75,12 +75,12 @@ export default function Navbar() {
           <a href="#top" className="flex items-center gap-2 shrink-0">
             <img
               src="/assets/kontari-logo.svg"
-              alt="Kontari"
+              alt="Kontari — software de gestión para estudios contables"
               className="h-6 md:h-7 w-auto dark:hidden"
             />
             <img
               src="/assets/kontari-logo-white.svg"
-              alt="Kontari"
+              alt="Kontari — software de gestión para estudios contables"
               className="h-6 md:h-7 w-auto hidden dark:block"
             />
           </a>

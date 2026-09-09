@@ -48,14 +48,14 @@ export default function Hero() {
           </div>
 
           <h1 className="reveal-up mt-6 text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold leading-[1.08] tracking-tight">
-            Tu estudio contable,{" "}
-            <span className="gradient-text">ordenado y automatizado</span>
+            El software de gestión para tu{" "}
+            <span className="gradient-text">estudio contable</span>
           </h1>
 
           <p className="reveal-up mt-6 text-lg text-brand-950/70 dark:text-slate-300 max-w-xl">
             Kontari centraliza clientes, AFIP/ARCA, claves fiscales, IVA,
-            contabilidad, honorarios, tareas y documentación en una sola
-            plataforma, con un{" "}
+            contabilidad, honorarios, tareas y documentación de tu estudio
+            contable en una sola plataforma, con un{" "}
             <span className="font-semibold text-brand-700 dark:text-brand-200">
               asistente de IA
             </span>{" "}

@@ -1,0 +1,29 @@
+{
+  "name": "Kontari — Software de gestión para estudios contables",
+  "short_name": "Kontari",
+  "description": "Software de gestión para estudios contables y contadores en Argentina: clientes, AFIP/ARCA, claves fiscales cifradas, IVA, contabilidad y asistente de IA.",
+  "lang": "es-AR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f6fb",
+  "theme_color": "#141833",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -31,7 +31,7 @@ const TIERS: Tier[] = [
     name: "Solo",
     tagline: "Para el contador que gestiona su propia cartera",
     monthly: 20000,
-    quarterly: 50000,
+    quarterly: 57000,
     yearly: 200000,
     features: [
       "Cartera de clientes sin límite estricto",
@@ -54,7 +54,7 @@ const TIERS: Tier[] = [
     name: "Estudio",
     tagline: "Para estudios que trabajan en equipo",
     monthly: 36000,
-    quarterly: 90000,
+    quarterly: 102600,
     yearly: 360000,
     featured: true,
     badge: "Más elegido",
@@ -73,7 +73,7 @@ const TIERS: Tier[] = [
     name: "Portal",
     tagline: "Sumá a tus clientes a la plataforma",
     monthly: 58000,
-    quarterly: 145000,
+    quarterly: 165000,
     yearly: 580000,
     features: [
       "Todo lo del plan Estudio",

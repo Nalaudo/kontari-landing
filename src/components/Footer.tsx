@@ -46,17 +46,18 @@ export default function Footer() {
           <div>
             <img
               src="/assets/kontari-logo.svg"
-              alt="Kontari"
+              alt="Kontari — software de gestión para estudios contables"
               className="h-6 w-auto dark:hidden"
             />
             <img
               src="/assets/kontari-logo-white.svg"
-              alt="Kontari"
+              alt="Kontari — software de gestión para estudios contables"
               className="h-6 w-auto hidden dark:block"
             />
             <p className="mt-4 text-sm opacity-60 max-w-xs">
-              El sistema de gestión para estudios contables modernos. Clientes,
-              AFIP/ARCA y seguridad, en un solo lugar.
+              El software de gestión para estudios contables y contadores
+              independientes en Argentina. Clientes, AFIP/ARCA, IVA, contabilidad
+              y seguridad, en un solo lugar.
             </p>
           </div>
           {COLUMNS.map((col) => (

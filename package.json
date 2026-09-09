@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && node scripts/prerender.mjs",
+    "build:og": "node scripts/build-og-image.mjs",
     "preview": "vite preview",
     "typecheck": "tsc -b && tsc -p tsconfig.test.json",
     "test": "vitest run",

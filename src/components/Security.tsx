@@ -3,6 +3,11 @@ import { ArrowDown, EyeOff, KeyRound, Lock, Shield, ShieldCheck, Smartphone } fr
 
 const CIPHER_CHARS = "ABCDEF0123456789+/=";
 
+/** Stable first frame so the prerendered HTML and the client match on mount. */
+const INITIAL_CIPHER = "9F3A1C7E42B0D6F8A15C3E9047BD62A1F8E0C4D7"
+  .padEnd(48, "0")
+  .slice(0, 48);
+
 function randomCipher(len: number) {
   let s = "";
   for (let i = 0; i < len; i++) {
@@ -52,9 +57,10 @@ const TONE_CLASS = {
 } as const;
 
 export default function Security() {
-  const [cipher, setCipher] = useState(() => randomCipher(48));
+  const [cipher, setCipher] = useState(INITIAL_CIPHER);
 
   useEffect(() => {
+    setCipher(randomCipher(48));
     const id = setInterval(() => setCipher(randomCipher(48)), 1400);
     return () => clearInterval(id);
   }, []);

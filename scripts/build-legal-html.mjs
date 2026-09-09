@@ -9,7 +9,7 @@ const OUT = join(dirname(fileURLToPath(import.meta.url)), "..", "public", "legal
 mkdirSync(OUT, { recursive: true });
 
 const LAST_UPDATED = "3 de septiembre de 2026";
-const VERSION = "2.0";
+const VERSION = "2.1";
 
 const NAV = [
   ["terminos.html", "Términos y Condiciones de Uso", "Términos y Condiciones"],
@@ -104,7 +104,21 @@ const bodies = {
 <p>5.7. <strong>Facturación.</strong> Kontari emitirá el comprobante fiscal correspondiente a nombre y CUIT informados por el Usuario.</p>
 
 <h2>6. Prueba gratuita y bonificaciones</h2>
-<p>Si Kontari ofrece un período de prueba, una bonificación o un descuento promocional, sus condiciones y duración se informarán al momento de la oferta. Al finalizar el período de prueba, la suscripción paga comienza automáticamente salvo cancelación previa. Kontari puede modificar o discontinuar las promociones para nuevas contrataciones.</p>
+<p>6.1. <strong>Prueba y promociones.</strong> Si Kontari ofrece un período de prueba, una bonificación o un descuento promocional, sus condiciones y duración se informarán al momento de la oferta. Al finalizar el período de prueba, la suscripción paga comienza automáticamente salvo cancelación previa. Kontari puede modificar o discontinuar las promociones para nuevas contrataciones.</p>
+<p>6.2. <strong>Programa de referidos.</strong> Kontari puede ofrecer un programa por el cual un Usuario ("Referente") que invita a otro profesional ("Referido") con su código recibe un beneficio. El beneficio:</p>
+<ul>
+<li>Se acredita <strong>únicamente cuando el Referido activa una suscripción paga y Mercado Pago confirma su primer cobro</strong>. El solo registro del Referido no genera beneficio.</li>
+<li>Consiste en un <strong>crédito equivalente a un (1) mes de suscripción</strong> por cada Referido que cumpla la condición anterior, sin límite de referidos pero con un tope de créditos acreditables por cuenta que Kontari informa en el Servicio.</li>
+<li><strong>No es dinero, no es reintegro ni es transferible</strong>, y no puede canjearse por efectivo. Se aplica así:
+<ul>
+<li>Si el Referente está en período de prueba o sin suscripción activa, se suma como <strong>treinta (30) días</strong> de acceso.</li>
+<li>Si el Referente tiene una suscripción <strong>mensual</strong> activa, el crédito se imputa al siguiente cobro, que se <strong>reduce al monto mínimo que Mercado Pago permite procesar</strong> (actualmente <strong>un peso argentino, $1</strong>). Por limitaciones del procesador de pagos <strong>no es posible un cobro de cero pesos</strong>; la diferencia entre ese mínimo y el precio del mes queda a favor del Usuario.</li>
+<li>Si el Referente tiene una suscripción <strong>trimestral o anual</strong> activa, se descuenta del siguiente cobro el <strong>equivalente a un mes del plan contratado</strong>; el cobro del período completo <strong>no se omite</strong>.</li>
+</ul>
+</li>
+<li>El crédito no utilizado no vence mientras el programa esté vigente, pero <strong>puede revertirse</strong> si el pago del Referido es reembolsado, anulado o sufre un contracargo.</li>
+<li>Kontari puede <strong>modificar, suspender o discontinuar</strong> el programa y su tope en cualquier momento, sin afectar los créditos ya aplicados.</li>
+</ul>
 
 <h2>7. Contenido del Usuario y titularidad</h2>
 <p>7.1. <strong>El Contenido del Usuario es y sigue siendo propiedad del Usuario.</strong> Kontari no adquiere ningún derecho sobre él, salvo la licencia limitada del punto 7.2.</p>
