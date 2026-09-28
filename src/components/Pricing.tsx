@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Check, TrendingDown } from "lucide-react";
-import TiltCard from "./TiltCard";
+import { ArrowRight, Check } from "lucide-react";
 import CtaLink from "./CtaLink";
+import Eyebrow from "./Eyebrow";
 import { contadoresLoginWithTier } from "../lib/urls";
 
 type Cycle = "monthly" | "quarterly" | "yearly";
@@ -102,133 +102,141 @@ function savingPct(t: Tier, c: Cycle) {
 
 function FeatureItem({ children }: { children: string }) {
   return (
-    <li className="flex items-start gap-2">
-      <Check className="w-4 h-4 mt-0.5 shrink-0 text-emerald-600" />
+    <li className="flex items-start gap-3 py-2.5 border-b border-line last:border-b-0">
+      <Check aria-hidden className="w-4 h-4 mt-0.5 shrink-0 text-pos" />
       {children}
     </li>
   );
 }
 
+const PERIOD: Record<Cycle, string> = {
+  monthly: "/ mes",
+  quarterly: "/ 3 meses",
+  yearly: "/ año",
+};
+
 export default function Pricing() {
   const [cycle, setCycle] = useState<Cycle>("monthly");
 
   return (
-    <section id="precios" className="py-20 md:py-28">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="text-center max-w-2xl mx-auto reveal-up">
-          <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">
-            Precios
-          </p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">
-            Tres planes, según cómo trabaja tu estudio
-          </h2>
-          <p className="mt-4 text-brand-950/60 dark:text-slate-400">
-            Empezás con 14 días de prueba gratis. Cancelá cuando quieras.
-          </p>
+    <section id="precios" className="py-24 md:py-36 border-t border-line">
+      <div className="wrap">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-4 reveal-up">
+            <Eyebrow n="07">Precios</Eyebrow>
+          </div>
+          <div className="lg:col-span-8">
+            <h2 className="reveal-up display text-[clamp(2.2rem,4.6vw,4.25rem)]">
+              Tres planes, según <em>cómo trabaja tu estudio</em>
+            </h2>
+            <p className="reveal-up mt-6 text-lg text-muted max-w-2xl">
+              Empezás con 14 días de prueba gratis. Cancelá cuando quieras.
+            </p>
+          </div>
         </div>
 
-        {/* Toggle mensual / trimestral */}
-        <div className="mt-10 flex justify-center reveal-up">
-          <div className="inline-flex rounded-full border border-brand-950/10 dark:border-white/10 bg-brand-50/60 dark:bg-white/[0.04] p-1">
+        {/* Toggle mensual / trimestral / anual */}
+        <div className="mt-14 md:mt-20 reveal-up flex flex-wrap items-center justify-between gap-4">
+          <div className="inline-flex rounded-md border border-line-strong p-1">
             {(["monthly", "quarterly", "yearly"] as Cycle[]).map((c) => (
               <button
                 key={c}
                 type="button"
                 onClick={() => setCycle(c)}
                 aria-pressed={cycle === c}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                  cycle === c
-                    ? "bg-brand-600 text-white shadow"
-                    : "opacity-60 hover:opacity-100"
+                className={`label-mono rounded-[4px] px-3 sm:px-4 py-2.5 transition-colors ${
+                  cycle === c ? "bg-fg text-bg" : "text-muted hover:text-fg"
                 }`}
               >
                 {CYCLE_LABEL[c]}
                 {c !== "monthly" && (
-                  <span className="ml-1.5 text-xs font-bold text-emerald-500">
+                  <span className={cycle === c ? "ml-1.5" : "ml-1.5 text-pos"}>
                     −{savingPct(TIERS[1], c)}%
                   </span>
                 )}
               </button>
             ))}
           </div>
+          <p className="label-mono text-muted">Precios en pesos argentinos (ARS)</p>
         </div>
 
-        <div className="mt-12 grid lg:grid-cols-3 gap-6 items-stretch max-w-5xl mx-auto">
-          {TIERS.map((t) => {
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 border-t border-l border-line">
+          {TIERS.map((t, i) => {
             const price = priceFor(t, cycle);
             const perMonth = Math.round(price / CYCLE_MONTHS[cycle]);
 
-            const cardClass = t.featured
-              ? "reveal-up relative glow-ring rounded-3xl border-2 border-brand-600 bg-white dark:bg-brand-950 p-8 flex flex-col lg:-translate-y-4"
-              : "reveal-up rounded-3xl border border-brand-950/10 dark:border-white/10 bg-brand-50/40 dark:bg-white/[0.03] p-8 flex flex-col";
-
-            const ctaClass = t.featured
-              ? "mt-8 text-center bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3.5 rounded-full shadow-lg shadow-brand-600/30 transition"
-              : "mt-8 text-center bg-brand-950 dark:bg-white/10 hover:bg-brand-800 text-white font-semibold py-3.5 rounded-full transition";
-
             return (
-              <TiltCard key={t.key} className={cardClass}>
-                {t.badge && (
-                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
-                    {t.badge}
-                  </span>
+              <div
+                key={t.key}
+                className={`reveal-up relative flex flex-col border-r border-b border-line p-6 md:p-8 ${
+                  t.featured ? "bg-panel" : ""
+                }`}
+              >
+                {t.featured && (
+                  <span aria-hidden className="absolute -top-px -left-px -right-px h-[3px] bg-accent" />
                 )}
-                <h3 className="font-bold text-lg">{t.name}</h3>
-                <p className="text-sm opacity-60 mt-1">{t.tagline}</p>
-
-                <div className="mt-6 flex items-end gap-1">
-                  <span className="text-4xl font-extrabold">{ars(price)}</span>
-                  <span className="opacity-50 mb-1">
-                    ARS{" "}
-                    {cycle === "monthly"
-                      ? "/ mes"
-                      : cycle === "quarterly"
-                        ? "/ 3 meses"
-                        : "/ año"}
+                <div className="h-5 flex items-center justify-between gap-3">
+                  <span className="font-mono text-xs text-muted tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
+                  {t.badge && (
+                    <span className="label-mono text-[10px] bg-accent text-on-accent rounded px-2 py-0.5">
+                      {t.badge}
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-8 text-3xl font-medium tracking-tight">{t.name}</h3>
+                <p className="mt-2 text-[15px] text-muted min-h-12">{t.tagline}</p>
+
+                <div className="mt-8 flex flex-wrap items-baseline gap-x-2">
+                  <span className="text-[2.75rem] leading-none font-medium tracking-[-0.04em] tabular-nums">
+                    {ars(price)}
+                  </span>
+                  <span className="label-mono text-muted">ARS {PERIOD[cycle]}</span>
                 </div>
 
                 {cycle !== "monthly" ? (
-                  <p className="mt-2 inline-flex w-fit items-center gap-1 text-xs font-semibold text-emerald-600 bg-emerald-500/10 px-2.5 py-1 rounded-full">
-                    <TrendingDown className="w-3.5 h-3.5" />
+                  <p className="mt-3 font-mono text-xs text-pos">
                     {ars(perMonth)}/mes · ahorrás {savingPct(t, cycle)}%
                   </p>
                 ) : (
-                  <p className="mt-2 text-xs opacity-50">
+                  <p className="mt-3 font-mono text-xs text-muted">
                     o {ars(t.yearly)} por año (−{savingPct(t, "yearly")}%)
                   </p>
                 )}
 
-                <ul className="mt-7 space-y-3 text-sm flex-1">
+                <CtaLink
+                  href={contadoresLoginWithTier(t.key)}
+                  className={`btn mt-8 w-full ${t.featured ? "btn-accent" : "btn-solid"}`}
+                >
+                  Empezar prueba gratis
+                  <ArrowRight className="w-4 h-4" />
+                </CtaLink>
+
+                <ul className="mt-8 text-[15px] flex-1 border-t border-line">
                   {t.features.map((f) => (
                     <FeatureItem key={f}>{f}</FeatureItem>
                   ))}
                 </ul>
-
-                <CtaLink
-                  href={contadoresLoginWithTier(t.key)}
-                  className={ctaClass}
-                >
-                  Empezar prueba gratis
-                </CtaLink>
-              </TiltCard>
+              </div>
             );
           })}
         </div>
 
-        <p className="reveal-up text-center text-sm opacity-50 mt-10">
-          Todos los planes incluyen 14 días de prueba gratis · Pagos seguros con
-          Mercado Pago · Sin permanencia ·{" "}
+        <div className="reveal-up mt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm text-muted">
+          <p>
+            Todos los planes incluyen 14 días de prueba gratis · Pagos seguros
+            con Mercado Pago · Sin permanencia
+          </p>
           <a
             href="mailto:contacto@kontari.com"
-            className="underline hover:opacity-100"
+            className="text-fg underline underline-offset-4 decoration-line-strong hover:decoration-accent"
           >
             ¿Más de 3 profesionales? Escribinos
           </a>
-        </p>
-        <p className="reveal-up text-center text-xs opacity-40 mt-2">
-          Los precios se actualizan trimestralmente según la variación del
-          IPC.
+        </div>
+        <p className="reveal-up mt-2 text-xs text-muted">
+          Los precios se actualizan trimestralmente según la variación del IPC.
         </p>
       </div>
     </section>

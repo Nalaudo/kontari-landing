@@ -1,27 +1,38 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 import { FAQS } from "../lib/faqs";
+import Eyebrow from "./Eyebrow";
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-white dark:bg-brand-900/30">
-      <div className="max-w-3xl mx-auto px-5 sm:px-8">
-        <div className="text-center reveal-up">
-          <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">
-            Preguntas frecuentes
-          </p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">
-            Todo lo que necesitás saber
-          </h2>
+    <section id="faq" className="py-24 md:py-36 border-t border-line">
+      <div className="wrap grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+        <div className="lg:col-span-4 reveal-up">
+          <div className="lg:sticky lg:top-28">
+            <Eyebrow n="08">Preguntas frecuentes</Eyebrow>
+            <h2 className="mt-6 display text-[clamp(2.2rem,4vw,3.5rem)]">
+              Todo lo que <em>necesitás saber</em>
+            </h2>
+            <p className="mt-6 text-muted max-w-xs">
+              ¿Otra duda?{" "}
+              <a
+                href="mailto:contacto@kontari.com"
+                className="text-fg underline underline-offset-4 decoration-line-strong hover:decoration-accent"
+              >
+                Escribinos
+              </a>{" "}
+              y te respondemos.
+            </p>
+          </div>
         </div>
 
-        <div className="mt-12 space-y-3">
+        <div className="lg:col-span-8 border-t border-line">
           {FAQS.map((faq, i) => (
             <div
               key={faq.q}
-              className={`faq-item reveal-up rounded-2xl border border-brand-950/10 dark:border-white/10 bg-white dark:bg-white/[0.03] px-6 ${
+              className={`faq-item reveal-up border-b border-line ${
                 openIndex === i ? "active" : ""
               }`}
             >
@@ -29,14 +40,21 @@ export default function Faq() {
                 type="button"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 aria-expanded={openIndex === i}
-                className="faq-btn w-full flex items-center justify-between py-5 text-left font-semibold"
+                className="faq-btn group w-full grid grid-cols-[2.5rem_1fr_1.5rem] items-baseline gap-2 py-6 text-left"
               >
-                {faq.q}
-                <ChevronDown className="chev w-4 h-4 shrink-0" />
+                <span aria-hidden className="font-mono text-xs text-muted tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-lg md:text-xl font-medium tracking-tight group-hover:text-accent transition-colors">
+                  {faq.q}
+                </span>
+                <Plus aria-hidden className="faq-icon w-5 h-5 text-muted self-center" />
               </button>
               <div className="faq-content">
                 <div>
-                  <div className="pb-5 text-sm opacity-70">{faq.a}</div>
+                  <p className="pb-7 pl-[3rem] pr-8 text-[15px] leading-relaxed text-muted max-w-2xl">
+                    {faq.a}
+                  </p>
                 </div>
               </div>
             </div>

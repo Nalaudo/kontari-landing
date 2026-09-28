@@ -7,7 +7,7 @@ type Theme = "light" | "dark";
 function currentTheme(): Theme {
   // Guard for the build-time prerender (no DOM). The real value is picked up
   // from the <html> class on the client by the effect below.
-  if (typeof document === "undefined") return "light";
+  if (typeof document === "undefined") return "dark";
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
 }
 

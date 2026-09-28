@@ -1,5 +1,4 @@
 import { useScrollReveal } from "./hooks/useScrollReveal";
-import CursorGlow from "./components/CursorGlow";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ProblemSolution from "./components/ProblemSolution";
@@ -22,7 +21,6 @@ export default function App() {
 
   return (
     <>
-      <CursorGlow />
       <Navbar />
 
       <main id="top" className="relative">

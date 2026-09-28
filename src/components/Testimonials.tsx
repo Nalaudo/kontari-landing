@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Quote } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Eyebrow from "./Eyebrow";
 
 const TESTIMONIALS = [
   {
@@ -22,6 +23,8 @@ const TESTIMONIALS = [
   },
 ];
 
+const pad = (n: number) => String(n).padStart(2, "0");
+
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -34,52 +37,95 @@ export default function Testimonials() {
   }, [paused, count]);
 
   return (
-    <section className="py-20 md:py-28 overflow-hidden bg-white dark:bg-brand-900/30">
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 text-center reveal-up">
-        <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">
-          Testimonios
-        </p>
-        <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">
-          Estudios que ya ordenaron su gestión
-        </h2>
-      </div>
-
-      <div
-        className="reveal-up relative max-w-3xl mx-auto mt-14 px-5 sm:px-8"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <div className="overflow-hidden rounded-3xl">
-          <div
-            className="t-track flex"
-            style={{ transform: `translateX(-${index * 100}%)` }}
-          >
-            {TESTIMONIALS.map((t) => (
-              <div key={t.name} className="w-full shrink-0 px-2">
-                <div className="rounded-2xl border border-brand-950/10 dark:border-white/10 bg-white dark:bg-white/[0.04] p-10 text-center">
-                  <Quote className="w-8 h-8 mx-auto text-brand-400" />
-                  <p className="mt-5 text-lg font-medium">&quot;{t.quote}&quot;</p>
-                  <p className="mt-5 font-semibold">{t.name}</p>
-                  <p className="text-sm opacity-50">{t.role}</p>
-                </div>
-              </div>
-            ))}
+    <section className="py-24 md:py-36 border-t border-line overflow-hidden">
+      <div className="wrap">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-4 reveal-up">
+            <Eyebrow n="06">Testimonios</Eyebrow>
+            <h2 className="mt-6 text-2xl font-medium tracking-tight max-w-xs">
+              Estudios que ya ordenaron su gestión
+            </h2>
           </div>
-        </div>
-        <div className="flex justify-center gap-2 mt-6">
-          {TESTIMONIALS.map((t, i) => (
-            <button
-              key={t.name}
-              type="button"
-              aria-label={`Ver testimonio ${i + 1}`}
-              onClick={() => setIndex(i)}
-              className={
-                i === index
-                  ? "w-6 h-2.5 rounded-full bg-brand-600 transition-all"
-                  : "w-2.5 h-2.5 rounded-full bg-brand-950/20 dark:bg-white/20 transition-all"
-              }
-            />
-          ))}
+
+          <div
+            className="lg:col-span-8 reveal-up"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            <div className="overflow-hidden">
+              <div
+                className="t-track flex"
+                style={{ transform: `translateX(-${index * 100}%)` }}
+              >
+                {TESTIMONIALS.map((t, i) => (
+                  <figure
+                    key={t.name}
+                    aria-hidden={i !== index}
+                    className="w-full shrink-0 pr-2"
+                  >
+                    <blockquote className="font-serif text-[clamp(2rem,4.4vw,3.9rem)] leading-[1.05] tracking-[-0.01em]">
+                      <span className="text-accent">“</span>
+                      {t.quote}
+                      <span className="text-accent">”</span>
+                    </blockquote>
+                    <figcaption className="mt-10 flex items-center gap-4">
+                      <span className="w-11 h-11 rounded-full border border-line-strong flex items-center justify-center font-mono text-xs">
+                        {t.name
+                          .split(" ")
+                          .map((w) => w[0])
+                          .join("")}
+                      </span>
+                      <span>
+                        <span className="block font-medium">{t.name}</span>
+                        <span className="block text-sm text-muted">{t.role}</span>
+                      </span>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-12 flex items-center gap-6 border-t border-line pt-6">
+              <span className="font-mono text-xs tabular-nums text-muted">
+                <span className="text-fg">{pad(index + 1)}</span> / {pad(count)}
+              </span>
+              <div className="flex flex-1 gap-2">
+                {TESTIMONIALS.map((t, i) => (
+                  <button
+                    key={t.name}
+                    type="button"
+                    aria-label={`Ver testimonio ${i + 1}`}
+                    onClick={() => setIndex(i)}
+                    className="group flex-1 py-3"
+                  >
+                    <span
+                      className={`block h-px transition-colors ${
+                        i === index ? "bg-accent" : "bg-line-strong group-hover:bg-fg"
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  aria-label="Testimonio anterior"
+                  onClick={() => setIndex((i) => (i - 1 + count) % count)}
+                  className="w-10 h-10 rounded-md border border-line-strong flex items-center justify-center hover:border-fg transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Testimonio siguiente"
+                  onClick={() => setIndex((i) => (i + 1) % count)}
+                  className="w-10 h-10 rounded-md border border-line-strong flex items-center justify-center hover:border-fg transition-colors"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

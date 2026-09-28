@@ -1,4 +1,4 @@
-import { CheckCircle2, Frown, Smile, XCircle } from "lucide-react";
+import Eyebrow from "./Eyebrow";
 
 const WITHOUT = [
   "Planillas de Excel desactualizadas repartidas entre varias personas",
@@ -14,47 +14,67 @@ const WITH = [
   "Vencimientos, tareas y documentos de cada cliente en un mismo lugar",
 ];
 
+type ColumnProps = {
+  side: "Debe" | "Haber";
+  title: string;
+  items: string[];
+  sign: "−" | "+";
+};
+
+function Column({ side, title, items, sign }: ColumnProps) {
+  const tone = sign === "+" ? "text-pos" : "text-neg";
+  return (
+    <div className="reveal-up">
+      <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-line-strong">
+        <h3 className="text-2xl md:text-3xl font-medium tracking-tight">
+          {title}
+        </h3>
+        <span className={`label-mono ${tone}`}>{side}</span>
+      </div>
+      <ul>
+        {items.map((item, i) => (
+          <li
+            key={item}
+            className="grid grid-cols-[2.25rem_1fr_1.5rem] gap-3 items-baseline py-5 border-b border-line"
+          >
+            <span className="font-mono text-xs text-muted tabular-nums">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span className="text-[15px] md:text-base leading-relaxed">{item}</span>
+            <span aria-hidden className={`font-mono text-lg text-right ${tone}`}>
+              {sign}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function ProblemSolution() {
   return (
-    <section className="py-20 md:py-28 bg-white dark:bg-brand-900/30">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="text-center max-w-2xl mx-auto reveal-up">
-          <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">
-            ¿Te suena familiar?
-          </p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">
-            El caos de gestionar decenas de clientes, contra un solo lugar para
-            todo
+    <section className="py-24 md:py-36 border-t border-line">
+      <div className="wrap">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-4 reveal-up">
+            <Eyebrow n="01">¿Te suena familiar?</Eyebrow>
+          </div>
+          <h2 className="lg:col-span-8 reveal-up display text-[clamp(2.2rem,4.6vw,4.25rem)]">
+            El caos de gestionar decenas de clientes, contra{" "}
+            <em>un solo lugar para todo</em>
           </h2>
         </div>
 
-        <div className="mt-14 grid md:grid-cols-2 gap-6">
-          <div className="reveal-up rounded-2xl border border-red-500/20 bg-red-50/60 dark:bg-red-500/5 p-8">
-            <h3 className="font-bold text-lg flex items-center gap-2 text-red-600 dark:text-red-400">
-              <Frown /> Sin Kontari
-            </h3>
-            <ul className="mt-6 space-y-4 text-sm">
-              {WITHOUT.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="reveal-up rounded-2xl border border-emerald-500/20 bg-emerald-50/60 dark:bg-emerald-500/5 p-8">
-            <h3 className="font-bold text-lg flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
-              <Smile /> Con Kontari
-            </h3>
-            <ul className="mt-6 space-y-4 text-sm">
-              {WITH.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+          <Column side="Debe" title="Sin Kontari" items={WITHOUT} sign="−" />
+          <Column side="Haber" title="Con Kontari" items={WITH} sign="+" />
+        </div>
+
+        <div className="reveal-up mt-10 flex flex-wrap items-baseline justify-between gap-4 border-y-4 border-double border-line-strong py-5">
+          <span className="label-mono text-muted">Saldo</span>
+          <span className="font-serif italic text-2xl md:text-3xl">
+            Tu estudio, en orden.
+          </span>
         </div>
       </div>
     </section>

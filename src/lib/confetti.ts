@@ -12,6 +12,6 @@ export function burstFrom(target: EventTarget | null) {
       x: (r.left + r.width / 2) / window.innerWidth,
       y: (r.top + r.height / 2) / window.innerHeight,
     },
-    colors: ["#4056d6", "#10b981", "#93a3f0"],
+    colors: ["#8190ff", "#3446d0", "#4ade9b", "#eeebe4"],
   });
 }

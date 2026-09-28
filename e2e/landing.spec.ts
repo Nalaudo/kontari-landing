@@ -104,10 +104,13 @@ test.describe("landing page", () => {
     ).toHaveAttribute("href", "/legal/cookies.html");
   });
 
-  test("theme toggle switches to dark mode", async ({ page }) => {
+  test("defaults to dark and the theme toggle switches to light", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /cambiar tema/i }).first().click();
     await expect(page.locator("html")).toHaveClass(/dark/);
+    await page.getByRole("button", { name: /cambiar tema/i }).first().click();
+    await expect(page.locator("html")).not.toHaveClass(/dark/);
+    await page.reload();
+    await expect(page.locator("html")).not.toHaveClass(/dark/);
   });
 
   test("no serious accessibility violations", async ({ page }, testInfo) => {

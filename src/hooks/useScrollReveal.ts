@@ -13,17 +13,19 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export function useScrollReveal() {
   useEffect(() => {
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>(".reveal-up").forEach((el) => {
         gsap.fromTo(
           el,
-          { opacity: 0, y: 36 },
+          { opacity: 0, y: 24 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.9,
             ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 88%" },
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
           },
         );
       });
@@ -39,6 +41,16 @@ export function useScrollReveal() {
       });
     });
 
-    return () => ctx.revert();
+    // The display fonts reflow the page a lot once they arrive; re-measure the
+    // trigger positions so nothing stays hidden above a stale start point.
+    let cancelled = false;
+    document.fonts?.ready.then(() => {
+      if (!cancelled) ScrollTrigger.refresh();
+    });
+
+    return () => {
+      cancelled = true;
+      ctx.revert();
+    };
   }, []);
 }

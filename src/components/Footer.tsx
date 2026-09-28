@@ -40,33 +40,33 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-brand-950/10 dark:border-white/10 py-14">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="grid md:grid-cols-4 gap-10">
-          <div>
+    <footer className="border-t border-line pt-16 md:pt-20 overflow-hidden">
+      <div className="wrap">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          <div className="md:col-span-5">
             <img
               src="/assets/kontari-logo.svg"
               alt="Kontari — software de gestión para estudios contables"
-              className="h-6 w-auto dark:hidden"
+              className="h-[22px] w-auto dark:hidden"
             />
             <img
               src="/assets/kontari-logo-white.svg"
               alt="Kontari — software de gestión para estudios contables"
-              className="h-6 w-auto hidden dark:block"
+              className="h-[22px] w-auto hidden dark:block"
             />
-            <p className="mt-4 text-sm opacity-60 max-w-xs">
+            <p className="mt-5 text-[15px] leading-relaxed text-muted max-w-sm">
               El software de gestión para estudios contables y contadores
               independientes en Argentina. Clientes, AFIP/ARCA, IVA, contabilidad
               y seguridad, en un solo lugar.
             </p>
           </div>
           {COLUMNS.map((col) => (
-            <div key={col.title}>
-              <p className="font-semibold text-sm">{col.title}</p>
-              <ul className="mt-4 space-y-2 text-sm opacity-60">
+            <div key={col.title} className="md:col-span-2 last:md:col-span-3">
+              <p className="label-mono text-muted">{col.title}</p>
+              <ul className="mt-5 space-y-2.5 text-[15px]">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="hover:opacity-100 transition">
+                    <a href={link.href} className="hover:text-accent transition-colors">
                       {link.label}
                     </a>
                   </li>
@@ -75,9 +75,24 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 pt-6 border-t border-brand-950/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs opacity-50">
+
+        {/* Oversized wordmark, tinted with the theme's line colour. */}
+        <div
+          aria-hidden
+          className="mt-20 md:mt-28 w-full aspect-[306/75] bg-fg/[0.07]"
+          style={{
+            maskImage: "url(/assets/kontari-logo-white.svg)",
+            WebkitMaskImage: "url(/assets/kontari-logo-white.svg)",
+            maskSize: "contain",
+            WebkitMaskSize: "contain",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+          }}
+        />
+
+        <div className="py-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-3 label-mono text-muted">
           <p>© 2026 Kontari. Todos los derechos reservados.</p>
-          <p>Hecho con ♥ en Argentina 🇦🇷</p>
+          <p>Hecho en Argentina</p>
         </div>
       </div>
     </footer>

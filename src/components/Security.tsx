@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { ArrowDown, EyeOff, KeyRound, Lock, Shield, ShieldCheck, Smartphone } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import Eyebrow from "./Eyebrow";
 
 const CIPHER_CHARS = "ABCDEF0123456789+/=";
 
@@ -18,43 +19,32 @@ function randomCipher(len: number) {
 
 const POINTS = [
   {
-    icon: Lock,
-    tone: "emerald" as const,
     title: "Cifrado AES-256-GCM",
     desc: "Las claves fiscales se cifran en tu navegador antes de salir de tu equipo.",
   },
   {
-    icon: KeyRound,
-    tone: "brand" as const,
     title: "PBKDF2 con 600.000 iteraciones",
     desc: "Derivación de claves robusta, resistente a ataques de fuerza bruta.",
   },
   {
-    icon: EyeOff,
-    tone: "emerald" as const,
     title: "Arquitectura zero-knowledge",
     desc: "Ni siquiera el equipo de Kontari puede leer las claves fiscales en texto plano.",
   },
   {
-    icon: Smartphone,
-    tone: "brand" as const,
     title: "Doble factor (2FA)",
     desc: "Verificación en dos pasos con app de autenticación y códigos de respaldo para blindar el acceso a la bóveda.",
   },
   {
-    icon: ShieldCheck,
-    tone: "emerald" as const,
     title: "Sesiones y accesos controlados",
     desc: "Autenticación segura, rate-limiting y permisos granulares por rol de usuario, con registro de eventos de seguridad.",
   },
 ];
 
-const TONE_CLASS = {
-  brand:
-    "w-10 h-10 rounded-xl bg-brand-600/10 text-brand-600 dark:text-brand-300 flex items-center justify-center shrink-0",
-  emerald:
-    "w-10 h-10 rounded-xl bg-emerald-600/10 text-emerald-600 flex items-center justify-center shrink-0",
-} as const;
+const STATS = [
+  { value: "256-bit", label: "Cifrado" },
+  { value: "600k", label: "Iteraciones" },
+  { value: "0", label: "Claves en texto plano" },
+];
 
 export default function Security() {
   const [cipher, setCipher] = useState(INITIAL_CIPHER);
@@ -66,76 +56,78 @@ export default function Security() {
   }, []);
 
   return (
-    <section
-      id="seguridad"
-      className="py-20 md:py-28 bg-white dark:bg-brand-900/30"
-    >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-16 items-center">
-        <div className="reveal-up order-2 lg:order-1">
-          <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">
-            Seguridad
-          </p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">
-            Seguridad de nivel bancario para tus datos más sensibles
-          </h2>
-          <p className="mt-4 text-brand-950/60 dark:text-slate-400">
-            Las claves fiscales de tus clientes son información crítica. Por eso
-            las tratamos con arquitectura zero-knowledge.
-          </p>
+    <section id="seguridad" className="py-24 md:py-36 border-t border-line">
+      <div className="wrap">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-4 reveal-up">
+            <Eyebrow n="04">Seguridad</Eyebrow>
+          </div>
+          <div className="lg:col-span-8">
+            <h2 className="reveal-up display text-[clamp(2.2rem,4.6vw,4.25rem)]">
+              Seguridad de nivel bancario para{" "}
+              <em>tus datos más sensibles</em>
+            </h2>
+            <p className="reveal-up mt-6 text-lg text-muted max-w-2xl">
+              Las claves fiscales de tus clientes son información crítica. Por
+              eso las tratamos con arquitectura zero-knowledge.
+            </p>
+          </div>
+        </div>
 
-          <ul className="mt-8 space-y-5">
-            {POINTS.map(({ icon: Icon, tone, title, desc }) => (
-              <li key={title} className="flex items-start gap-4">
-                <div className={TONE_CLASS[tone]}>
-                  <Icon className="w-5 h-5" />
-                </div>
+        <div className="mt-16 md:mt-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <ul className="lg:col-span-6 border-t border-line">
+            {POINTS.map(({ title, desc }, i) => (
+              <li
+                key={title}
+                className="reveal-up grid grid-cols-[3rem_1fr] gap-2 py-6 border-b border-line"
+              >
+                <span className="font-mono text-xs text-muted tabular-nums pt-1.5">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <div>
-                  <p className="font-semibold">{title}</p>
-                  <p className="text-sm opacity-60">{desc}</p>
+                  <p className="text-lg font-medium tracking-tight">{title}</p>
+                  <p className="mt-1.5 text-[15px] leading-relaxed text-muted">{desc}</p>
                 </div>
               </li>
             ))}
           </ul>
-        </div>
 
-        <div className="reveal-up order-1 lg:order-2 relative">
-          <div className="absolute -inset-6 bg-gradient-to-tr from-emerald-400/20 to-brand-500/20 blur-2xl rounded-[2rem]" />
-          <div className="relative rounded-2xl border border-brand-950/10 dark:border-white/10 bg-brand-950 text-white p-8 shadow-2xl">
-            <div className="flex items-center gap-2 text-emerald-400 text-xs font-semibold uppercase tracking-widest">
-              <Shield className="w-4 h-4" /> Cifrado en vivo
-            </div>
-            <div className="mt-6 space-y-3 encrypt-cell text-sm">
-              <div className="flex items-center justify-between opacity-60">
-                <span>Clave fiscal (texto plano)</span>
+          <div className="reveal-up lg:col-span-6 lg:sticky lg:top-28">
+            <div className="rounded-xl border border-line-strong bg-panel overflow-hidden font-mono text-sm shadow-[0_40px_120px_-40px_rgb(0_0_0/0.45)]">
+              <div className="flex items-center justify-between px-5 h-11 border-b border-line">
+                <span className="label-mono text-pos flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-pos animate-pulse" />
+                  Cifrado en vivo
+                </span>
+                <span className="label-mono text-muted">bóveda / claves</span>
               </div>
-              <div className="rounded-lg bg-white/5 px-4 py-3 tracking-widest">
-                MiClaveFiscal2026!
+              <div className="p-5 sm:p-6 space-y-3">
+                <p className="label-mono text-muted">Clave fiscal · texto plano</p>
+                <div className="rounded-md border border-line bg-bg px-4 py-3 tracking-widest">
+                  MiClaveFiscal2026!
+                </div>
+                <div className="flex items-center gap-3 py-1 text-muted">
+                  <span className="h-px flex-1 bg-line" />
+                  <ArrowDown aria-hidden className="w-4 h-4 text-accent" />
+                  <span className="label-mono">AES-256-GCM · PBKDF2</span>
+                  <span className="h-px flex-1 bg-line" />
+                </div>
+                <p className="label-mono text-muted">Almacenado (AES-256-GCM)</p>
+                <div className="rounded-md border border-accent/40 bg-accent/5 px-4 py-3 text-accent break-all">
+                  {cipher}
+                </div>
               </div>
-              <div className="flex justify-center py-1">
-                <ArrowDown className="w-4 h-4 text-emerald-400 animate-bounce" />
-              </div>
-              <div className="flex items-center justify-between opacity-60">
-                <span>Almacenado (AES-256-GCM)</span>
-              </div>
-              <div className="rounded-lg bg-emerald-500/10 border border-emerald-500/20 px-4 py-3 text-emerald-300 break-all">
-                {cipher}
-              </div>
-            </div>
-            <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-3 gap-3 text-center">
-              <div>
-                <p className="text-xl font-bold">256-bit</p>
-                <p className="text-[11px] opacity-50 mt-1">Cifrado</p>
-              </div>
-              <div>
-                <p className="text-xl font-bold">600k</p>
-                <p className="text-[11px] opacity-50 mt-1">Iteraciones</p>
-              </div>
-              <div>
-                <p className="text-xl font-bold">0</p>
-                <p className="text-[11px] opacity-50 mt-1">
-                  Claves en texto plano
-                </p>
-              </div>
+              <dl className="grid grid-cols-3 border-t border-line">
+                {STATS.map((s) => (
+                  <div
+                    key={s.label}
+                    className="flex flex-col-reverse px-4 py-5 border-r border-line last:border-r-0"
+                  >
+                    <dt className="mt-1 text-[11px] text-muted leading-tight">{s.label}</dt>
+                    <dd className="font-sans text-2xl font-medium tracking-tight">{s.value}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
         </div>

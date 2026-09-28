@@ -1,3 +1,5 @@
+import Eyebrow from "./Eyebrow";
+
 const STEPS = [
   {
     n: 1,
@@ -23,33 +25,39 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-20 md:py-28">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="text-center max-w-2xl mx-auto reveal-up">
-          <p className="text-sm font-semibold text-brand-600 dark:text-brand-300 uppercase tracking-widest">
-            Cómo funciona
-          </p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">
-            Empezá en minutos
+    <section id="como-funciona" className="py-24 md:py-36 border-t border-line">
+      <div className="wrap">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-4 reveal-up">
+            <Eyebrow n="05">Cómo funciona</Eyebrow>
+          </div>
+          <h2 className="lg:col-span-8 reveal-up display text-[clamp(2.2rem,4.6vw,4.25rem)]">
+            Empezá <em>en minutos</em>
           </h2>
         </div>
 
-        <div className="relative mt-16 grid md:grid-cols-4 gap-10">
-          <div className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-0.5 bg-brand-950/10 dark:bg-white/10">
-            <div
-              id="steps-line"
-              className="h-full bg-gradient-to-r from-brand-500 to-emerald-500 w-0"
-            />
+        <div className="relative mt-16 md:mt-24">
+          <div className="hidden md:block absolute top-0 inset-x-0 h-px bg-line">
+            <div id="steps-line" className="h-full bg-accent w-0" />
           </div>
-          {STEPS.map((step) => (
-            <div key={step.n} className="reveal-up relative text-center">
-              <div className="mx-auto w-14 h-14 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-brand-600/30">
-                {step.n}
-              </div>
-              <h3 className="mt-5 font-bold">{step.title}</h3>
-              <p className="mt-2 text-sm opacity-60">{step.desc}</p>
-            </div>
-          ))}
+          <ol className="grid grid-cols-1 md:grid-cols-4 gap-x-8">
+            {STEPS.map((step) => (
+              <li
+                key={step.n}
+                className="reveal-up relative pt-8 pb-10 md:pb-0 border-t border-line md:border-t-0"
+              >
+                <span
+                  aria-hidden
+                  className="hidden md:block absolute -top-[5px] left-0 w-[9px] h-[9px] rounded-full bg-bg border border-accent"
+                />
+                <span className="font-serif italic text-7xl md:text-8xl leading-none text-accent">
+                  {String(step.n).padStart(2, "0")}
+                </span>
+                <h3 className="mt-6 text-xl font-medium tracking-tight">{step.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">{step.desc}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
