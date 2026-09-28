@@ -6,7 +6,6 @@ import Features from "./components/Features";
 import AiSection from "./components/AiSection";
 import Security from "./components/Security";
 import HowItWorks from "./components/HowItWorks";
-import Testimonials from "./components/Testimonials";
 import Pricing from "./components/Pricing";
 import Faq from "./components/Faq";
 import FinalCta from "./components/FinalCta";
@@ -30,7 +29,6 @@ export default function App() {
         <AiSection />
         <Security />
         <HowItWorks />
-        <Testimonials />
         <Pricing />
         <Faq />
         <FinalCta />

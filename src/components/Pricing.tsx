@@ -221,7 +221,7 @@ export default function Pricing() {
                 }`}
               />
             </span>
-            Mis clientes tienen su propia app
+            Portal para mis clientes
           </button>
           <p aria-live="polite" className="lg:ml-auto text-sm">
             {recommended ? (

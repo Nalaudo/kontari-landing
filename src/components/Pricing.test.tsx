@@ -52,7 +52,7 @@ describe("<Pricing>", () => {
     expect(screen.queryByText(/recomendado para vos/i)).not.toBeInTheDocument();
     await userEvent.click(screen.getByRole("button", { name: /más profesionales/i }));
     expect(screen.getByText(/^te conviene/i)).toHaveTextContent("Estudio");
-    await userEvent.click(screen.getByRole("switch", { name: /propia app/i }));
+    await userEvent.click(screen.getByRole("switch", { name: /portal para mis clientes/i }));
     expect(screen.getByText(/^te conviene/i)).toHaveTextContent("Portal");
     expect(screen.getByText(/recomendado para vos/i)).toBeInTheDocument();
   });

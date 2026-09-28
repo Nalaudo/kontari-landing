@@ -10,7 +10,6 @@
   --animate-marquee: marquee 40s linear infinite;
   --animate-blink: blink 1s steps(1) infinite;
   --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  --animate-fill: fill 5.5s linear both;
 
   @keyframes marquee {
     to {
@@ -20,14 +19,6 @@
   @keyframes blink {
     50% {
       opacity: 0;
-    }
-  }
-  @keyframes fill {
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
     }
   }
   @keyframes rise {
@@ -340,11 +331,6 @@
 }
 .faq-icon {
   transition: transform 0.3s ease;
-}
-
-/* Testimonials */
-.t-track {
-  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 /* Reveal defaults (GSAP will animate from these) */
