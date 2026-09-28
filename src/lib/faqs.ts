@@ -54,6 +54,10 @@ export const FAQS: Faq[] = [
     a: "Sí, no hay permanencia mínima. Podés cancelar en cualquier momento desde tu configuración, y volver a suscribirte al plan que quieras.",
   },
   {
+    q: "¿Kontari tiene un programa de referidos?",
+    a: "Sí. Desde tu cuenta tenés un código y un link de invitación para compartir con otros contadores. Por cada colega que se sume con tu código y active su suscripción, te regalamos un mes de Kontari; tu invitado arranca con 15 días extra de prueba.",
+  },
+  {
     q: "¿Cuántos clientes y usuarios puedo cargar?",
     a: "No hay un límite estricto de clientes (sujeto a uso justo). Los planes se diferencian por funciones y por profesionales del estudio: Solo incluye 1, Estudio y Portal hasta 3. Si son más, escribinos y armamos un plan a medida.",
   },

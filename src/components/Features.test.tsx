@@ -27,6 +27,6 @@ describe("<Features>", () => {
     expect(screen.getByRole("heading", { name: "Asistente de IA integrado" })).toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "Dashboard y reportes" })).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: /todas/i }));
-    expect(screen.getAllByRole("heading", { level: 3 })).toHaveLength(18);
+    expect(screen.getAllByRole("heading", { level: 3 })).toHaveLength(19);
   });
 });

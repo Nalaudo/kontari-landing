@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Check, Minus, Plus, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Gift, Minus, Plus, Sparkles } from "lucide-react";
 import CtaLink from "./CtaLink";
 import Eyebrow from "./Eyebrow";
 import { contadoresLoginWithTier } from "../lib/urls";
@@ -347,6 +347,11 @@ export default function Pricing() {
         </div>
         <p className="reveal-up mt-2 text-xs text-muted">
           Los precios se actualizan trimestralmente según la variación del IPC.
+        </p>
+        <p className="reveal-up mt-6 inline-flex items-center gap-2.5 rounded-full border border-emerald/40 bg-emerald/5 px-4 py-2 text-sm">
+          <Gift aria-hidden className="w-4 h-4 shrink-0 text-emerald" />
+          Invitá a un colega contador y ganá un mes gratis de Kontari por cada
+          uno que se suscriba.
         </p>
       </div>
     </section>
