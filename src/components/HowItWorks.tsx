@@ -1,23 +1,32 @@
+import { KeyRound, LayoutDashboard, SearchCheck, UserPlus } from "lucide-react";
 import Eyebrow from "./Eyebrow";
 
 const STEPS = [
   {
     n: 1,
+    icon: UserPlus,
+    tone: "tone-indigo",
     title: "Creá tu cuenta",
     desc: "Registrate como estudio o contador independiente en menos de 2 minutos.",
   },
   {
     n: 2,
+    icon: SearchCheck,
+    tone: "tone-amber",
     title: "Cargá tus clientes",
     desc: "Ingresá el CUIT y Kontari completa los datos fiscales automáticamente.",
   },
   {
     n: 3,
+    icon: KeyRound,
+    tone: "tone-emerald",
     title: "Asegurá las claves",
     desc: "Guardá las claves fiscales cifradas de extremo a extremo.",
   },
   {
     n: 4,
+    icon: LayoutDashboard,
+    tone: "tone-violet",
     title: "Gestioná todo",
     desc: "IVA, contabilidad, honorarios, vencimientos, documentos y equipo en un dashboard, con un asistente de IA que responde y redacta por vos.",
   },
@@ -25,11 +34,11 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-24 md:py-36 border-t border-line">
+    <section id="como-funciona" className="tone-sky py-24 md:py-36 border-t border-line">
       <div className="wrap">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 reveal-up">
-            <Eyebrow n="05">Cómo funciona</Eyebrow>
+            <Eyebrow>Cómo funciona</Eyebrow>
           </div>
           <h2 className="lg:col-span-8 reveal-up display text-[clamp(2.2rem,4.6vw,4.25rem)]">
             Empezá <em>en minutos</em>
@@ -37,24 +46,20 @@ export default function HowItWorks() {
         </div>
 
         <div className="relative mt-16 md:mt-24">
-          <div className="hidden md:block absolute top-0 inset-x-0 h-px bg-line">
-            <div id="steps-line" className="h-full bg-accent w-0" />
+          <div className="hidden md:block absolute top-6 left-6 right-6 h-px bg-line">
+            <div
+              id="steps-line"
+              className="h-full w-0 bg-[linear-gradient(90deg,var(--k-indigo),var(--k-amber),var(--k-emerald),var(--k-violet))]"
+            />
           </div>
-          <ol className="grid grid-cols-1 md:grid-cols-4 gap-x-8">
-            {STEPS.map((step) => (
-              <li
-                key={step.n}
-                className="reveal-up relative pt-8 pb-10 md:pb-0 border-t border-line md:border-t-0"
-              >
-                <span
-                  aria-hidden
-                  className="hidden md:block absolute -top-[5px] left-0 w-[9px] h-[9px] rounded-full bg-bg border border-accent"
-                />
-                <span className="font-serif italic text-7xl md:text-8xl leading-none text-accent">
-                  {String(step.n).padStart(2, "0")}
+          <ol className="grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-10">
+            {STEPS.map(({ n, icon: Icon, tone, title, desc }) => (
+              <li key={n} className={`${tone} reveal-up group relative`}>
+                <span className="relative w-12 h-12 rounded-full bg-bg border-2 border-sec text-sec flex items-center justify-center transition-all duration-300 group-hover:bg-sec group-hover:text-bg group-hover:scale-110 shadow-[0_0_24px_-6px_var(--k-sec)]">
+                  <Icon aria-hidden className="w-5 h-5" />
                 </span>
-                <h3 className="mt-6 text-xl font-medium tracking-tight">{step.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{step.desc}</p>
+                <h3 className="mt-6 text-xl font-medium tracking-tight">{title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">{desc}</p>
               </li>
             ))}
           </ol>

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Security from "./Security";
 
 afterEach(() => vi.useRealTimers());
@@ -18,10 +18,17 @@ describe("<Security>", () => {
     expect(screen.getAllByText(/arquitectura zero-knowledge/i).length).toBeGreaterThan(0);
   });
 
-  it("rotates the decorative cipher string on an interval without crashing", () => {
+  it("renders the live cipher panel without crashing while time passes", () => {
     vi.useFakeTimers();
     render(<Security />);
     vi.advanceTimersByTime(3000);
     expect(screen.getByText(/cifrado aes-256-gcm/i)).toBeInTheDocument();
+  });
+
+  it("lets the visitor type the secret that gets encrypted", () => {
+    render(<Security />);
+    const input = screen.getByLabelText(/clave fiscal · texto plano/i);
+    fireEvent.change(input, { target: { value: "otra-clave" } });
+    expect(input).toHaveValue("otra-clave");
   });
 });

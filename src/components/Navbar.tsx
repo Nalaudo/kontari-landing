@@ -4,18 +4,17 @@ import { useTheme } from "../hooks/useTheme";
 import CtaLink from "./CtaLink";
 import { CLIENTES_URL, CONTADORES_LOGIN_URL, CONTADORES_URL } from "../lib/urls";
 
+// Each link carries its section's tone, so the nav doubles as a colour key.
 const NAV_LINKS = [
-  { href: "#producto", label: "Producto" },
-  { href: "#funcionalidades", label: "Funcionalidades" },
-  { href: "#ia", label: "IA" },
-  { href: "#seguridad", label: "Seguridad" },
-  { href: "#precios", label: "Precios" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#producto", label: "Producto", tone: "tone-indigo" },
+  { href: "#funcionalidades", label: "Funcionalidades", tone: "tone-amber" },
+  { href: "#ia", label: "IA", tone: "tone-violet" },
+  { href: "#seguridad", label: "Seguridad", tone: "tone-emerald" },
+  { href: "#precios", label: "Precios", tone: "tone-sky" },
+  { href: "#faq", label: "FAQ", tone: "tone-coral" },
 ];
 
 const SECTION_IDS = NAV_LINKS.map((link) => link.href.slice(1));
-
-const pad = (i: number) => String(i + 1).padStart(2, "0");
 
 export default function Navbar() {
   const { toggle } = useTheme();
@@ -70,25 +69,24 @@ export default function Navbar() {
         </a>
 
         <div className="hidden lg:flex items-center gap-5 2xl:gap-7">
-          {NAV_LINKS.map((link, i) => {
+          {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.slice(1);
             return (
               <a
                 key={link.href}
                 href={link.href}
-                className={`label-mono flex items-center gap-2 transition-colors ${
-                  isActive ? "text-fg" : "text-muted hover:text-fg"
+                className={`${link.tone} group label-mono flex items-center gap-2 transition-colors ${
+                  isActive ? "text-sec" : "text-muted hover:text-fg"
                 }`}
               >
                 <span
                   aria-hidden
-                  className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                    isActive ? "bg-accent" : "bg-line-strong"
+                  className={`rounded-full bg-sec transition-all duration-300 ${
+                    isActive
+                      ? "w-2 h-2 shadow-[0_0_10px_var(--k-sec)]"
+                      : "w-1.5 h-1.5 opacity-70 group-hover:opacity-100"
                   }`}
                 />
-                <span aria-hidden className="hidden 2xl:inline opacity-60">
-                  {pad(i)}
-                </span>
                 {link.label}
               </a>
             );
@@ -164,16 +162,14 @@ export default function Navbar() {
           </button>
         </div>
         <div className="wrap flex-1 flex flex-col py-4 overflow-y-auto">
-          {NAV_LINKS.map((link, i) => (
+          {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="flex items-baseline gap-4 py-3.5 border-b border-line text-3xl font-medium tracking-tight"
+              className={`${link.tone} flex items-center gap-4 py-3.5 border-b border-line text-3xl font-medium tracking-tight`}
             >
-              <span aria-hidden className="label-mono text-accent">
-                {pad(i)}
-              </span>
+              <span aria-hidden className="w-2.5 h-2.5 rounded-full bg-sec" />
               {link.label}
             </a>
           ))}

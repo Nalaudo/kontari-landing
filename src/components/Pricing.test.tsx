@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Pricing from "./Pricing";
+import Pricing, { recommendTier } from "./Pricing";
 import { contadoresLoginWithTier } from "../lib/urls";
 
 describe("<Pricing>", () => {
@@ -38,5 +38,22 @@ describe("<Pricing>", () => {
   it("marks Estudio as the featured plan", () => {
     render(<Pricing />);
     expect(screen.getByText("Más elegido")).toBeInTheDocument();
+  });
+
+  it("recommends a plan from team size and the client app", () => {
+    expect(recommendTier(1, false)).toBe("solo");
+    expect(recommendTier(3, false)).toBe("estudio");
+    expect(recommendTier(4, false)).toBe("portal");
+    expect(recommendTier(1, true)).toBe("portal");
+  });
+
+  it("highlights the recommended plan from the finder", async () => {
+    render(<Pricing />);
+    expect(screen.queryByText(/recomendado para vos/i)).not.toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: /más profesionales/i }));
+    expect(screen.getByText(/^te conviene/i)).toHaveTextContent("Estudio");
+    await userEvent.click(screen.getByRole("switch", { name: /propia app/i }));
+    expect(screen.getByText(/^te conviene/i)).toHaveTextContent("Portal");
+    expect(screen.getByText(/recomendado para vos/i)).toBeInTheDocument();
   });
 });

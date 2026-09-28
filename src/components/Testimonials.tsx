@@ -7,23 +7,24 @@ const TESTIMONIALS = [
     quote:
       "Dejé de perseguir carpetas y post-its. Ahora todo mi estudio vive en Kontari.",
     name: "Marina L.",
+    tone: "tone-coral",
     role: "Contadora Pública, Rosario",
   },
   {
     quote:
       "La búsqueda automática de datos de AFIP/ARCA nos ahorra horas cada semana.",
     name: "Diego F.",
+    tone: "tone-sky",
     role: "Estudio contable asociado, CABA",
   },
   {
     quote:
       "La seguridad de las claves fiscales era nuestra mayor preocupación. Kontari la resolvió.",
     name: "Sofía R.",
+    tone: "tone-emerald",
     role: "Contadora, Córdoba",
   },
 ];
-
-const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
@@ -37,11 +38,11 @@ export default function Testimonials() {
   }, [paused, count]);
 
   return (
-    <section className="py-24 md:py-36 border-t border-line overflow-hidden">
+    <section className="tone-coral py-24 md:py-36 border-t border-line overflow-hidden">
       <div className="wrap">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 reveal-up">
-            <Eyebrow n="06">Testimonios</Eyebrow>
+            <Eyebrow>Testimonios</Eyebrow>
             <h2 className="mt-6 text-2xl font-medium tracking-tight max-w-xs">
               Estudios que ya ordenaron su gestión
             </h2>
@@ -61,15 +62,15 @@ export default function Testimonials() {
                   <figure
                     key={t.name}
                     aria-hidden={i !== index}
-                    className="w-full shrink-0 pr-2"
+                    className={`${t.tone} w-full shrink-0 pr-2`}
                   >
                     <blockquote className="font-serif text-[clamp(2rem,4.4vw,3.9rem)] leading-[1.05] tracking-[-0.01em]">
-                      <span className="text-accent">“</span>
+                      <span className="text-sec">“</span>
                       {t.quote}
-                      <span className="text-accent">”</span>
+                      <span className="text-sec">”</span>
                     </blockquote>
                     <figcaption className="mt-10 flex items-center gap-4">
-                      <span className="w-11 h-11 rounded-full border border-line-strong flex items-center justify-center font-mono text-xs">
+                      <span className="w-11 h-11 rounded-full bg-sec text-bg flex items-center justify-center font-mono text-xs font-medium">
                         {t.name
                           .split(" ")
                           .map((w) => w[0])
@@ -86,9 +87,6 @@ export default function Testimonials() {
             </div>
 
             <div className="mt-12 flex items-center gap-6 border-t border-line pt-6">
-              <span className="font-mono text-xs tabular-nums text-muted">
-                <span className="text-fg">{pad(index + 1)}</span> / {pad(count)}
-              </span>
               <div className="flex flex-1 gap-2">
                 {TESTIMONIALS.map((t, i) => (
                   <button
@@ -96,13 +94,20 @@ export default function Testimonials() {
                     type="button"
                     aria-label={`Ver testimonio ${i + 1}`}
                     onClick={() => setIndex(i)}
-                    className="group flex-1 py-3"
+                    className={`${t.tone} group flex-1 py-3`}
                   >
-                    <span
-                      className={`block h-px transition-colors ${
-                        i === index ? "bg-accent" : "bg-line-strong group-hover:bg-fg"
-                      }`}
-                    />
+                    <span className="block h-[3px] rounded-full bg-line-strong overflow-hidden">
+                      <span
+                        key={i === index ? `on-${index}-${paused}` : "off"}
+                        className={`block h-full bg-sec origin-left ${
+                          i < index || (i === index && paused)
+                            ? "w-full"
+                            : i === index
+                              ? "w-full animate-fill"
+                              : "w-0 group-hover:w-1/4 transition-all"
+                        }`}
+                      />
+                    </span>
                   </button>
                 ))}
               </div>

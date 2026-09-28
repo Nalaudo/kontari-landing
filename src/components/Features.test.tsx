@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Features from "./Features";
 
 describe("<Features>", () => {
@@ -19,5 +19,14 @@ describe("<Features>", () => {
     ]) {
       expect(screen.getByRole("heading", { name: title })).toBeInTheDocument();
     }
+  });
+
+  it("filters the cards by category", () => {
+    render(<Features />);
+    fireEvent.click(screen.getByRole("button", { name: /ia y seguridad/i }));
+    expect(screen.getByRole("heading", { name: "Asistente de IA integrado" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Dashboard y reportes" })).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /todas/i }));
+    expect(screen.getAllByRole("heading", { level: 3 })).toHaveLength(18);
   });
 });

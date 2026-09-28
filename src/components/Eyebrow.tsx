@@ -1,17 +1,17 @@
 type EyebrowProps = {
-  /** Section number shown as "§ 02". Omit for an unnumbered label. */
-  n?: string;
   children: string;
   className?: string;
 };
 
-/** Section label in the ledger style: "§ 02 ——— FUNCIONALIDADES". */
-export default function Eyebrow({ n, children, className = "" }: EyebrowProps) {
+/** Section label: a dot and a mono caption, tinted with the section's tone. */
+export default function Eyebrow({ children, className = "" }: EyebrowProps) {
   return (
-    <p className={`label-mono flex items-center gap-3 text-muted ${className}`}>
-      {n && <span className="text-accent">§ {n}</span>}
-      {n && <span aria-hidden className="h-px w-10 bg-line-strong" />}
-      <span>{children}</span>
+    <p className={`label-mono flex items-center gap-2.5 text-sec ${className}`}>
+      <span
+        aria-hidden
+        className="w-2 h-2 rounded-full bg-sec shadow-[0_0_12px_var(--k-sec)]"
+      />
+      {children}
     </p>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Minus, Plus, Sparkles } from "lucide-react";
 import CtaLink from "./CtaLink";
 import Eyebrow from "./Eyebrow";
 import { contadoresLoginWithTier } from "../lib/urls";
@@ -15,6 +15,7 @@ const CYCLE_LABEL: Record<Cycle, string> = {
 
 type Tier = {
   key: string;
+  tone: string;
   name: string;
   tagline: string;
   monthly: number;
@@ -28,6 +29,7 @@ type Tier = {
 const TIERS: Tier[] = [
   {
     key: "solo",
+    tone: "tone-emerald",
     name: "Solo",
     tagline: "Para el contador que gestiona su propia cartera",
     monthly: 20000,
@@ -51,6 +53,7 @@ const TIERS: Tier[] = [
   },
   {
     key: "estudio",
+    tone: "tone-indigo",
     name: "Estudio",
     tagline: "Para estudios que trabajan en equipo",
     monthly: 36000,
@@ -70,6 +73,7 @@ const TIERS: Tier[] = [
   },
   {
     key: "portal",
+    tone: "tone-amber",
     name: "Portal",
     tagline: "Sumá a tus clientes a la plataforma",
     monthly: 58000,
@@ -103,7 +107,7 @@ function savingPct(t: Tier, c: Cycle) {
 function FeatureItem({ children }: { children: string }) {
   return (
     <li className="flex items-start gap-3 py-2.5 border-b border-line last:border-b-0">
-      <Check aria-hidden className="w-4 h-4 mt-0.5 shrink-0 text-pos" />
+      <Check aria-hidden className="w-4 h-4 mt-0.5 shrink-0 text-sec" />
       {children}
     </li>
   );
@@ -115,15 +119,28 @@ const PERIOD: Record<Cycle, string> = {
   yearly: "/ año",
 };
 
+/** Plan that fits a team size and whether clients get their own app. */
+export function recommendTier(pros: number, portal: boolean): Tier["key"] {
+  if (portal || pros > 3) return "portal";
+  if (pros > 1) return "estudio";
+  return "solo";
+}
+
+const MAX_PROS = 10;
+
 export default function Pricing() {
   const [cycle, setCycle] = useState<Cycle>("monthly");
+  const [pros, setPros] = useState(1);
+  const [portal, setPortal] = useState(false);
+  const [touched, setTouched] = useState(false);
+  const recommended = touched ? recommendTier(pros, portal) : null;
 
   return (
-    <section id="precios" className="py-24 md:py-36 border-t border-line">
+    <section id="precios" className="tone-sky py-24 md:py-36 border-t border-line">
       <div className="wrap">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 reveal-up">
-            <Eyebrow n="07">Precios</Eyebrow>
+            <Eyebrow>Precios</Eyebrow>
           </div>
           <div className="lg:col-span-8">
             <h2 className="reveal-up display text-[clamp(2.2rem,4.6vw,4.25rem)]">
@@ -135,8 +152,93 @@ export default function Pricing() {
           </div>
         </div>
 
+        {/* Plan finder */}
+        <div className="reveal-up mt-14 md:mt-20 rounded-xl border border-line-strong bg-panel p-5 md:p-6 flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-10">
+          <p className="flex items-center gap-2 font-medium">
+            <Sparkles aria-hidden className="w-4 h-4 text-sky" />
+            ¿Qué plan te conviene?
+          </p>
+          <div className="flex items-center gap-3">
+            <span id="pros-label" className="text-sm text-muted">
+              Profesionales en el estudio
+            </span>
+            <div
+              role="group"
+              aria-labelledby="pros-label"
+              className="inline-flex items-center rounded-md border border-line-strong"
+            >
+              <button
+                type="button"
+                aria-label="Menos profesionales"
+                disabled={pros <= 1}
+                onClick={() => {
+                  setTouched(true);
+                  setPros((n) => Math.max(1, n - 1));
+                }}
+                className="w-9 h-9 flex items-center justify-center text-muted hover:text-fg disabled:opacity-30"
+              >
+                <Minus className="w-4 h-4" />
+              </button>
+              <output
+                aria-live="polite"
+                className="w-10 text-center font-mono text-lg tabular-nums text-sky"
+              >
+                {pros >= MAX_PROS ? `${MAX_PROS}+` : pros}
+              </output>
+              <button
+                type="button"
+                aria-label="Más profesionales"
+                disabled={pros >= MAX_PROS}
+                onClick={() => {
+                  setTouched(true);
+                  setPros((n) => Math.min(MAX_PROS, n + 1));
+                }}
+                className="w-9 h-9 flex items-center justify-center text-muted hover:text-fg disabled:opacity-30"
+              >
+                <Plus className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={portal}
+            onClick={() => {
+              setTouched(true);
+              setPortal((v) => !v);
+            }}
+            className="flex items-center gap-3 text-sm text-muted hover:text-fg text-left"
+          >
+            <span
+              aria-hidden
+              className={`relative w-10 h-6 shrink-0 rounded-full transition-colors ${
+                portal ? "bg-amber" : "bg-line-strong"
+              }`}
+            >
+              <span
+                className={`absolute top-1 left-1 w-4 h-4 rounded-full bg-bg transition-transform ${
+                  portal ? "translate-x-4" : ""
+                }`}
+              />
+            </span>
+            Mis clientes tienen su propia app
+          </button>
+          <p aria-live="polite" className="lg:ml-auto text-sm">
+            {recommended ? (
+              <>
+                Te conviene{" "}
+                <span className="font-medium text-fg">
+                  {TIERS.find((t) => t.key === recommended)!.name}
+                </span>
+              </>
+            ) : (
+              <span className="text-muted">Ajustá y te marcamos el plan</span>
+            )}
+          </p>
+        </div>
+
         {/* Toggle mensual / trimestral / anual */}
-        <div className="mt-14 md:mt-20 reveal-up flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-8 reveal-up flex flex-wrap items-center justify-between gap-4">
           <div className="inline-flex rounded-md border border-line-strong p-1">
             {(["monthly", "quarterly", "yearly"] as Cycle[]).map((c) => (
               <button
@@ -150,7 +252,7 @@ export default function Pricing() {
               >
                 {CYCLE_LABEL[c]}
                 {c !== "monthly" && (
-                  <span className={cycle === c ? "ml-1.5" : "ml-1.5 text-pos"}>
+                  <span className={cycle === c ? "ml-1.5" : "ml-1.5 text-emerald"}>
                     −{savingPct(TIERS[1], c)}%
                   </span>
                 )}
@@ -161,26 +263,34 @@ export default function Pricing() {
         </div>
 
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 border-t border-l border-line">
-          {TIERS.map((t, i) => {
+          {TIERS.map((t) => {
             const price = priceFor(t, cycle);
             const perMonth = Math.round(price / CYCLE_MONTHS[cycle]);
+            const isPick = recommended === t.key;
+            const dimmed = recommended !== null && !isPick;
 
             return (
               <div
                 key={t.key}
-                className={`reveal-up relative flex flex-col border-r border-b border-line p-6 md:p-8 ${
-                  t.featured ? "bg-panel" : ""
+                className={`${t.tone} reveal-up relative flex flex-col border-r border-b border-line p-6 md:p-8 transition-all duration-500 ${
+                  t.featured || isPick ? "bg-panel" : ""
+                } ${isPick ? "shadow-[inset_0_0_0_2px_var(--k-sec)] z-10" : ""} ${
+                  dimmed ? "opacity-55" : ""
                 }`}
               >
-                {t.featured && (
-                  <span aria-hidden className="absolute -top-px -left-px -right-px h-[3px] bg-accent" />
-                )}
-                <div className="h-5 flex items-center justify-between gap-3">
-                  <span className="font-mono text-xs text-muted tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
+                <span
+                  aria-hidden
+                  className={`absolute -top-px -left-px -right-px bg-sec transition-all ${
+                    t.featured || isPick ? "h-[3px]" : "h-px opacity-60"
+                  }`}
+                />
+                <div className="h-6 flex items-center justify-between gap-3">
+                  <span className="flex items-center gap-2 label-mono text-sec">
+                    <span aria-hidden className="w-2 h-2 rounded-full bg-sec" />
+                    {isPick ? "Recomendado para vos" : "Plan"}
                   </span>
                   {t.badge && (
-                    <span className="label-mono text-[10px] bg-accent text-on-accent rounded px-2 py-0.5">
+                    <span className="label-mono text-[10px] bg-sec text-bg rounded px-2 py-0.5">
                       {t.badge}
                     </span>
                   )}
@@ -196,7 +306,7 @@ export default function Pricing() {
                 </div>
 
                 {cycle !== "monthly" ? (
-                  <p className="mt-3 font-mono text-xs text-pos">
+                  <p className="mt-3 font-mono text-xs text-emerald">
                     {ars(perMonth)}/mes · ahorrás {savingPct(t, cycle)}%
                   </p>
                 ) : (
@@ -207,7 +317,7 @@ export default function Pricing() {
 
                 <CtaLink
                   href={contadoresLoginWithTier(t.key)}
-                  className={`btn mt-8 w-full ${t.featured ? "btn-accent" : "btn-solid"}`}
+                  className={`btn mt-8 w-full ${t.featured || isPick ? "btn-tone" : "btn-solid"}`}
                 >
                   Empezar prueba gratis
                   <ArrowRight className="w-4 h-4" />

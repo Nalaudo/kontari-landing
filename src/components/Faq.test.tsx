@@ -31,4 +31,11 @@ describe("<Faq>", () => {
     expect(first).toHaveAttribute("aria-expanded", "false");
     expect(second).toHaveAttribute("aria-expanded", "true");
   });
+
+  it("filters questions with the search box (accent-insensitive)", async () => {
+    render(<Faq />);
+    await userEvent.type(screen.getByLabelText(/buscar en las preguntas/i), "factura electronica");
+    expect(screen.getByRole("button", { name: /emite facturas electrónicas/i })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /¿qué es kontari\?/i })).not.toBeInTheDocument();
+  });
 });

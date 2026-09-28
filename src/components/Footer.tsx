@@ -1,6 +1,7 @@
 const COLUMNS = [
   {
     title: "Producto",
+    dot: "bg-indigo",
     links: [
       { label: "Funcionalidades", href: "#funcionalidades" },
       { label: "Seguridad", href: "#seguridad" },
@@ -10,6 +11,7 @@ const COLUMNS = [
   },
   {
     title: "Empresa",
+    dot: "bg-amber",
     links: [
       { label: "Sobre nosotros", href: "#" },
       { label: "Contacto", href: "mailto:contacto@kontari.com" },
@@ -18,6 +20,7 @@ const COLUMNS = [
   },
   {
     title: "Legal",
+    dot: "bg-emerald",
     links: [
       { label: "Términos y condiciones", href: "/legal/terminos.html" },
       { label: "Política de privacidad", href: "/legal/privacidad.html" },
@@ -62,11 +65,14 @@ export default function Footer() {
           </div>
           {COLUMNS.map((col) => (
             <div key={col.title} className="md:col-span-2 last:md:col-span-3">
-              <p className="label-mono text-muted">{col.title}</p>
+              <p className="label-mono text-muted flex items-center gap-2">
+                <span aria-hidden className={`w-1.5 h-1.5 rounded-full ${col.dot}`} />
+                {col.title}
+              </p>
               <ul className="mt-5 space-y-2.5 text-[15px]">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="hover:text-accent transition-colors">
+                    <a href={link.href} className="hover:text-indigo transition-colors">
                       {link.label}
                     </a>
                   </li>
@@ -79,7 +85,7 @@ export default function Footer() {
         {/* Oversized wordmark, tinted with the theme's line colour. */}
         <div
           aria-hidden
-          className="mt-20 md:mt-28 w-full aspect-[306/75] bg-fg/[0.07]"
+          className="mt-20 md:mt-28 w-full aspect-[306/75] opacity-25 bg-[linear-gradient(100deg,var(--k-indigo),var(--k-violet)_35%,var(--k-coral)_70%,var(--k-amber))]"
           style={{
             maskImage: "url(/assets/kontari-logo-white.svg)",
             WebkitMaskImage: "url(/assets/kontari-logo-white.svg)",

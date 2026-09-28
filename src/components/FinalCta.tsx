@@ -14,13 +14,14 @@ export default function FinalCta() {
             "radial-gradient(ellipse 60% 70% at 50% 100%, black, transparent 75%)",
         }}
       />
-      <div
-        aria-hidden
-        className="absolute left-1/2 -translate-x-1/2 bottom-[-20rem] w-[60rem] h-[34rem] rounded-full bg-accent/20 blur-[140px]"
-      />
+      <div aria-hidden className="absolute inset-x-0 bottom-[-16rem] h-[34rem] pointer-events-none">
+        <div className="absolute left-[8%] w-[30rem] h-[30rem] rounded-full bg-indigo/25 blur-[130px]" />
+        <div className="absolute left-[35%] w-[30rem] h-[30rem] rounded-full bg-violet/20 blur-[130px]" />
+        <div className="absolute right-[8%] w-[30rem] h-[30rem] rounded-full bg-amber/20 blur-[130px]" />
+      </div>
       <div className="relative wrap text-center">
         <h2 className="reveal-up display text-[clamp(3rem,8.5vw,8rem)] max-w-5xl mx-auto">
-          Empezá a ordenar tu estudio <em>hoy</em>
+          Empezá a ordenar tu estudio <em className="ink-gradient">hoy</em>
         </h2>
         <p className="reveal-up mt-8 text-lg md:text-xl text-muted max-w-xl mx-auto">
           Sumate a los estudios contables que ya digitalizaron su gestión con

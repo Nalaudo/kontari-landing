@@ -10,6 +10,7 @@
   --animate-marquee: marquee 40s linear infinite;
   --animate-blink: blink 1s steps(1) infinite;
   --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-fill: fill 5.5s linear both;
 
   @keyframes marquee {
     to {
@@ -19,6 +20,14 @@
   @keyframes blink {
     50% {
       opacity: 0;
+    }
+  }
+  @keyframes fill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
     }
   }
   @keyframes rise {
@@ -49,6 +58,13 @@
   --color-on-accent: var(--k-on-accent);
   --color-pos: var(--k-pos);
   --color-neg: var(--k-neg);
+  --color-sec: var(--k-sec);
+  --color-indigo: var(--k-indigo);
+  --color-amber: var(--k-amber);
+  --color-violet: var(--k-violet);
+  --color-emerald: var(--k-emerald);
+  --color-sky: var(--k-sky);
+  --color-coral: var(--k-coral);
 }
 
 :root {
@@ -62,6 +78,14 @@
   --k-on-accent: #ffffff;
   --k-pos: #13784a;
   --k-neg: #b93a1d;
+  /* Section palette: each section tints its labels, icons and accent words. */
+  --k-indigo: #3446d0;
+  --k-amber: #b45309;
+  --k-violet: #9333ea;
+  --k-emerald: #047857;
+  --k-sky: #0369a1;
+  --k-coral: #c2410c;
+  --k-sec: var(--k-accent);
   color-scheme: light;
 }
 
@@ -76,7 +100,34 @@
   --k-on-accent: #0a0b0e;
   --k-pos: #4ade9b;
   --k-neg: #ff7a5c;
+  --k-indigo: #8190ff;
+  --k-amber: #ffb547;
+  --k-violet: #d38cff;
+  --k-emerald: #4ade9b;
+  --k-sky: #5cc8ff;
+  --k-coral: #ff8a66;
+  --k-sec: var(--k-accent);
   color-scheme: dark;
+}
+
+/* Section tones: set --k-sec for everything inside (text-sec, bg-sec…). */
+.tone-indigo {
+  --k-sec: var(--k-indigo);
+}
+.tone-amber {
+  --k-sec: var(--k-amber);
+}
+.tone-violet {
+  --k-sec: var(--k-violet);
+}
+.tone-emerald {
+  --k-sec: var(--k-emerald);
+}
+.tone-sky {
+  --k-sec: var(--k-sky);
+}
+.tone-coral {
+  --k-sec: var(--k-coral);
 }
 
 @layer base {
@@ -146,8 +197,58 @@
     font-style: italic;
     font-weight: 400;
     letter-spacing: -0.01em;
-    color: var(--k-accent);
+    color: var(--k-sec);
+    padding-right: 0.06em;
   }
+}
+
+/* Multicolour ink for the hero's accent words. */
+.ink-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--k-indigo) 0%,
+    var(--k-violet) 35%,
+    var(--k-coral) 70%,
+    var(--k-amber) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: ink-shift 8s ease-in-out infinite alternate;
+}
+@keyframes ink-shift {
+  to {
+    background-position: 100% 0;
+  }
+}
+
+/* Card spotlight: a soft glow in the card's tone that follows the pointer.
+   JS sets --mx/--my on pointer move (see Features). */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--k-sec) 16%, transparent),
+    transparent 60%
+  );
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Horizontal ticker */
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 /* Faint ledger grid used behind the hero. */
@@ -188,6 +289,15 @@
   color: var(--k-on-accent);
 }
 .btn-accent:hover {
+  background: var(--k-fg);
+  color: var(--k-bg);
+}
+/* Button in the surrounding section/card tone. */
+.btn-tone {
+  background: var(--k-sec);
+  color: var(--k-bg);
+}
+.btn-tone:hover {
   background: var(--k-fg);
   color: var(--k-bg);
 }

@@ -48,8 +48,22 @@ export function useScrollReveal() {
       if (!cancelled) ScrollTrigger.refresh();
     });
 
+    // Interactive sections (feature filter, FAQ search…) change the page
+    // height; re-measure so content below them doesn't stay hidden.
+    let raf = 0;
+    const resize =
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(() => {
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => ScrollTrigger.refresh());
+          });
+    resize?.observe(document.body);
+
     return () => {
       cancelled = true;
+      resize?.disconnect();
+      cancelAnimationFrame(raf);
       ctx.revert();
     };
   }, []);
