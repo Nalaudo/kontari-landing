@@ -230,6 +230,10 @@ export default function Pricing() {
           Los precios se actualizan trimestralmente según la variación del
           IPC.
         </p>
+        <p className="reveal-up text-center text-sm opacity-60 mt-4">
+          🎁 Invitá a un colega contador y ganá un mes gratis de Kontari por
+          cada uno que se suscriba.
+        </p>
       </div>
     </section>
   );

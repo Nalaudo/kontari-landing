@@ -4,6 +4,7 @@ import {
   Clock,
   FileCheck2,
   FolderTree,
+  Gift,
   Landmark,
   LayoutDashboard,
   LayoutGrid,
@@ -147,6 +148,13 @@ const FEATURES: Feature[] = [
     tone: "brand",
     title: "Dashboard y reportes",
     desc: "Clientes activos, pendientes, vencimientos e ingresos del mes. Seis reportes (productividad, rentabilidad, riesgo de cartera y más) con vistas guardadas y búsqueda global.",
+  },
+  {
+    icon: Gift,
+    tone: "emerald",
+    title: "Referí a otros contadores",
+    desc: "Compartí tu código de invitación: por cada colega que se suma con él y activa su suscripción, sumás un mes gratis de Kontari. Tu invitado arranca con 15 días extra de prueba.",
+    badge: "Nuevo",
   },
 ];
 

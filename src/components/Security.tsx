@@ -45,7 +45,7 @@ const POINTS = [
     icon: ShieldCheck,
     tone: "emerald" as const,
     title: "Sesiones y accesos controlados",
-    desc: "Autenticación segura, rate-limiting y permisos granulares por rol de usuario, con registro de eventos de seguridad.",
+    desc: "Autenticación segura y rate-limiting contra intentos de fuerza bruta. Cada inicio de sesión, activación de 2FA y cambio sensible queda en un registro de auditoría con fecha e IP.",
   },
 ];
 
