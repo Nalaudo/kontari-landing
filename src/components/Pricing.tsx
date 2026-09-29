@@ -342,7 +342,7 @@ export default function Pricing() {
             href="mailto:contacto@kontari.com"
             className="text-fg underline underline-offset-4 decoration-line-strong hover:decoration-accent"
           >
-            ¿Más de 3 profesionales? Escribinos
+            ¿Dudas sobre qué plan elegir? Escribinos
           </a>
         </div>
         <p className="reveal-up mt-2 text-xs text-muted">

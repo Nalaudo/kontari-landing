@@ -43,7 +43,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "¿Qué diferencia a cada plan?",
-    a: "Solo es para un contador que gestiona su cartera puertas adentro. Estudio suma trabajo en equipo: hasta 3 profesionales con roles y permisos, organigrama, registro de tiempos y capacidad. Portal agrega la app para tus clientes, con chat y carga de documentación de su lado.",
+    a: "Solo es para un contador que gestiona su cartera puertas adentro. Estudio suma trabajo en equipo: hasta 3 profesionales con roles y permisos, organigrama, registro de tiempos y capacidad. Portal suma profesionales ilimitados y la app para tus clientes, con chat y carga de documentación de su lado.",
   },
   {
     q: "¿Mis clientes pueden entrar a la plataforma?",
@@ -59,7 +59,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "¿Cuántos clientes y usuarios puedo cargar?",
-    a: "No hay un límite estricto de clientes (sujeto a uso justo). Los planes se diferencian por funciones y por profesionales del estudio: Solo incluye 1, Estudio y Portal hasta 3. Si son más, escribinos y armamos un plan a medida.",
+    a: "No hay un límite estricto de clientes (sujeto a uso justo). Los planes se diferencian por funciones y por profesionales del estudio: Solo incluye 1, Estudio hasta 3 y Portal no tiene límite de profesionales.",
   },
   {
     q: "¿Kontari reemplaza mi sistema de facturación?",
