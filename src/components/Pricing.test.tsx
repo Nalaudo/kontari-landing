@@ -35,6 +35,24 @@ describe("<Pricing>", () => {
     );
   });
 
+  it("shows each plan's monthly AI reading quota", () => {
+    render(<Pricing />);
+    expect(screen.getByText("500 lecturas de documentos con IA por mes")).toBeInTheDocument();
+    expect(screen.getByText("2.000 lecturas de documentos con IA por mes")).toBeInTheDocument();
+    expect(screen.getByText("5.000 lecturas de documentos con IA por mes")).toBeInTheDocument();
+  });
+
+  it("lists the extra reading packs with their price", () => {
+    render(<Pricing />);
+    const packs = document.getElementById("packs-ia")!;
+    expect(packs).toHaveTextContent("500 lecturas");
+    expect(packs).toHaveTextContent("$5.000");
+    expect(packs).toHaveTextContent("1.000 lecturas");
+    expect(packs).toHaveTextContent("$9.000");
+    expect(packs).toHaveTextContent("3.000 lecturas");
+    expect(packs).toHaveTextContent("$24.000");
+  });
+
   it("marks Estudio as the featured plan", () => {
     render(<Pricing />);
     expect(screen.getByText("Más elegido")).toBeInTheDocument();

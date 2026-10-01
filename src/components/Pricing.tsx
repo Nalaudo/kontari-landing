@@ -3,6 +3,7 @@ import { ArrowRight, Check, Gift, Minus, Plus, Sparkles } from "lucide-react";
 import CtaLink from "./CtaLink";
 import Eyebrow from "./Eyebrow";
 import { contadoresLoginWithTier } from "../lib/urls";
+import { AI_PACKS, LECTURAS_POR_MES, lecturasLabel } from "../lib/aiPacks";
 
 type Cycle = "monthly" | "quarterly" | "yearly";
 
@@ -47,6 +48,7 @@ const TIERS: Tier[] = [
       "Documentos por cliente, vinculados a tareas e impuestos",
       "Firma electrónica de documentos",
       "Asistente de IA integrado (opt-in)",
+      lecturasLabel(LECTURAS_POR_MES.solo),
       "Reportes de productividad y rentabilidad",
       "1 profesional",
     ],
@@ -69,6 +71,7 @@ const TIERS: Tier[] = [
       "Chat interno del equipo",
       "Catálogo de servicios y honorarios",
       "Campañas y comunicaciones a clientes",
+      lecturasLabel(LECTURAS_POR_MES.estudio),
     ],
   },
   {
@@ -87,6 +90,7 @@ const TIERS: Tier[] = [
       "Tus clientes suben documentación y ven sus vencimientos",
       "Reuniones con videollamada + feed de calendario iCal",
       "Onboarding de clientes guiado",
+      lecturasLabel(LECTURAS_POR_MES.portal),
     ],
   },
 ];
@@ -331,6 +335,39 @@ export default function Pricing() {
               </div>
             );
           })}
+        </div>
+
+        {/* Packs de lecturas de IA */}
+        <div
+          id="packs-ia"
+          className="reveal-up mt-8 rounded-xl border border-line-strong bg-panel p-5 md:p-6 flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-10"
+        >
+          <div className="lg:max-w-sm">
+            <p className="flex items-center gap-2 font-medium">
+              <Sparkles aria-hidden className="w-4 h-4 text-sky" />
+              ¿Necesitás leer más documentos con IA?
+            </p>
+            <p className="mt-1 text-sm text-muted">
+              Cada plan incluye un cupo mensual. Una lectura es un documento (una factura típica
+              consume 1); cargar a mano o importar el TXT del Libro IVA Digital no consume nada.
+              Si te quedás corto, sumás un pack: pago único y no vence.
+            </p>
+          </div>
+          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 flex-1">
+            {AI_PACKS.map((p) => (
+              <li key={p.id} className="rounded-md border border-line px-4 py-3">
+                <span className="block font-mono text-sm text-sky tabular-nums">
+                  {p.units.toLocaleString("es-AR")} lecturas
+                </span>
+                <span className="block text-xl font-medium tracking-tight tabular-nums">
+                  {ars(p.price)}
+                </span>
+                <span className="block label-mono text-muted">
+                  ARS · pago único
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="reveal-up mt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm text-muted">

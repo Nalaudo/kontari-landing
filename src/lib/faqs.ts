@@ -30,6 +30,10 @@ export const FAQS: Faq[] = [
     a: "La IA viene desactivada: la habilita un administrador del estudio desde Configuración. Cuando está activa, los datos necesarios de cada consulta se envían al proveedor del modelo (a través de Vercel AI Gateway) únicamente para responder esa consulta; no se usan para entrenar modelos. El proveedor está declarado en la política de privacidad y podés desactivar la función cuando quieras.",
   },
   {
+    q: "¿Qué son las lecturas de IA y qué pasa si se me acaban?",
+    a: "Una lectura es lo que consume la IA al leer un documento: una factura típica en PDF o foto cuenta 1, y las planillas o archivos con muchos comprobantes cuentan más. Cada plan incluye un cupo mensual (Solo 500, Estudio 2.000, Portal 5.000) que se renueva el 1° de cada mes. Cargar comprobantes a mano o importar el TXT del Libro IVA Digital no consume lecturas. Si te quedás sin cupo, los archivos nuevos esperan en la cola y podés sumar un pack de lecturas (500, 1.000 o 3.000) con pago único y sin vencimiento.",
+  },
+  {
     q: "¿Kontari maneja el IVA y la contabilidad?",
     a: "Sí. Importás los comprobantes de compras y ventas desde Mis Comprobantes y Kontari arma el Libro IVA Digital, la liquidación mensual (renglones F2051) y las retenciones y percepciones (SICORE), más el tablero de Monotributo. Sobre esos mismos comprobantes genera la contabilidad: plan de cuentas, libro diario con asientos automáticos, mayor, sumas y saldos, bienes de uso, conciliación bancaria y estados contables con cierre de ejercicio.",
   },
@@ -59,7 +63,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "¿Cuántos clientes y usuarios puedo cargar?",
-    a: "No hay un límite estricto de clientes (sujeto a uso justo). Los planes se diferencian por funciones y por profesionales del estudio: Solo incluye 1, Estudio hasta 3 y Portal no tiene límite de profesionales.",
+    a: "No hay un límite estricto de clientes (sujeto a uso justo). Los planes se diferencian por funciones y por profesionales del estudio: Solo incluye 1, Estudio hasta 3 y Portal no tiene límite de profesionales. Lo que sí tiene cupo mensual es la lectura de documentos con IA (ver más arriba), con packs adicionales si lo necesitás.",
   },
   {
     q: "¿Kontari reemplaza mi sistema de facturación?",
