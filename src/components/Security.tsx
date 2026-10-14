@@ -43,7 +43,7 @@ const STATS = [
 ];
 
 export default function Security() {
-  const [plain, setPlain] = useState("MiClaveFiscal2026!");
+  const [plain, setPlain] = useState("texto-de-ejemplo");
   const [derived, setDerived] = useState<DerivedKey | null>(null);
   const [deriving, setDeriving] = useState(false);
   const [out, setOut] = useState({ iv: "", cipher: INITIAL_CIPHER });
@@ -135,7 +135,7 @@ export default function Security() {
               </div>
               <div className="p-5 sm:p-6 space-y-3">
                 <label htmlFor="vault-demo" className="block label-mono text-muted">
-                  Clave fiscal · texto plano (no uses una real)
+                  Texto de ejemplo · se cifra en esta página y no se envía
                 </label>
                 <input
                   id="vault-demo"

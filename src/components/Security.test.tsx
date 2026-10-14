@@ -27,7 +27,7 @@ describe("<Security>", () => {
 
   it("lets the visitor type the secret that gets encrypted", () => {
     render(<Security />);
-    const input = screen.getByLabelText(/clave fiscal · texto plano/i);
+    const input = screen.getByLabelText(/texto de ejemplo/i);
     fireEvent.change(input, { target: { value: "otra-clave" } });
     expect(input).toHaveValue("otra-clave");
   });

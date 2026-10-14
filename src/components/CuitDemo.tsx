@@ -201,7 +201,7 @@ export default function CuitDemo() {
           <span className="w-2.5 h-2.5 rounded-full bg-emerald" />
         </div>
         <span className="font-mono text-[11px] text-muted truncate">
-          contadores.kontari.com.ar/clientes/nuevo
+          Vista previa · alta de cliente
         </span>
         <span className="label-mono text-[10px] text-violet border border-violet/40 rounded px-1.5">
           Demo
@@ -211,7 +211,7 @@ export default function CuitDemo() {
       <div className="p-5 sm:p-6">
         {/* CUIT input */}
         <label className="label-mono text-muted" htmlFor="cuit-demo">
-          CUIT del cliente · probá con el tuyo
+          CUIT de ejemplo · no se envía a ningún lado
         </label>
         <div className="mt-2 flex items-center gap-3">
           <div className="flex-1">
@@ -249,7 +249,7 @@ export default function CuitDemo() {
             ) : phase === "invalid" ? (
               <CircleAlert aria-hidden className="w-4 h-4" />
             ) : null}
-            ARCA
+            Padrón
           </div>
         </div>
 

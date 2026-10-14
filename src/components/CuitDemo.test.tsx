@@ -4,7 +4,7 @@ import CuitDemo from "./CuitDemo";
 
 afterEach(() => vi.useRealTimers());
 
-const input = () => screen.getByLabelText(/cuit del cliente/i) as HTMLInputElement;
+const input = () => screen.getByLabelText(/cuit de ejemplo/i) as HTMLInputElement;
 
 describe("<CuitDemo>", () => {
   it("renders the first contribuyente fully autocompleted (stable for prerender)", () => {
