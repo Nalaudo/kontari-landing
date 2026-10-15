@@ -53,6 +53,13 @@ describe("<Pricing>", () => {
     expect(packs).toHaveTextContent("$24.000");
   });
 
+  it("lists the monthly client report and the fee proposal generator", () => {
+    render(<Pricing />);
+    expect(screen.getByText("Informe financiero mensual en PDF con tu logo para cada cliente")).toBeInTheDocument();
+    expect(screen.getByText("Generador de propuestas de honorarios y convenio")).toBeInTheDocument();
+    expect(screen.getByText("Tus clientes ven su informe del mes en el portal")).toBeInTheDocument();
+  });
+
   it("marks Estudio as the featured plan", () => {
     render(<Pricing />);
     expect(screen.getByText("Más elegido")).toBeInTheDocument();

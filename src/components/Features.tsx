@@ -1,8 +1,10 @@
 import {
   BookOpenCheck,
   CalendarClock,
+  ChartNoAxesCombined,
   Clock,
   FileCheck2,
+  FileSignature,
   FolderTree,
   Gift,
   Landmark,
@@ -54,6 +56,20 @@ const FEATURES: Feature[] = [
     cat: "clientes",
     title: "Cartera de clientes centralizada",
     desc: "Todo el portafolio de tu estudio en un solo lugar: ficha, estado, historial y actividad de cada cliente. Activá o desactivá sin perder la información cargada.",
+  },
+  {
+    icon: ChartNoAxesCombined,
+    cat: "clientes",
+    title: "Informe del mes para cada cliente",
+    desc: "Cargás los números del mes y sale el informe en PDF con tu logo y tu matrícula: semáforo, resultados, flujo de caja, punto de equilibrio, variación real contra el IPC, control de monotributo y tres recomendaciones ya redactadas. Tu cliente lo ve en su portal.",
+    badge: "Nuevo",
+  },
+  {
+    icon: FileSignature,
+    cat: "clientes",
+    title: "Propuestas de honorarios",
+    desc: "Elegís el tipo de cliente y los servicios, y Kontari arma la propuesta en PDF con tu marca: honorario mensual, anuales, primer año estimado, alcance y condiciones. Si la acepta, generás el convenio y el checklist de documentación.",
+    badge: "Nuevo",
   },
   {
     icon: SearchCheck,
