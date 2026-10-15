@@ -42,6 +42,10 @@ export const FAQS: Faq[] = [
     a: "Sí. Además de la facturación interna de honorarios del estudio (con cobro por link de Mercado Pago), podés emitir comprobantes electrónicos A, B, C y E con CAE real contra los web services de ARCA (WSFEv1 / WSCT). La emisión fiscal la habilita un administrador y requiere que el contribuyente delegue el servicio en ARCA.",
   },
   {
+    q: "¿Puedo mandarle a cada cliente un informe de cómo le fue en el mes?",
+    a: "Sí. Cargás los números del mes (ventas, costo, gastos, cobros y pagos, IPC) y Kontari arma el informe financiero en PDF con tu logo y tu matrícula: semáforo, estado de resultados comparado con el mes anterior, flujo de caja, punto de equilibrio, variación real contra la inflación, control de monotributo y tres recomendaciones ya redactadas. Se calcula con reglas fijas, sin IA, así que no consume lecturas. Lo publicás en el portal del cliente o se lo mandás por mail. También podés armar propuestas de honorarios en PDF para clientes nuevos, con alcance, condiciones y convenio.",
+  },
+  {
     q: "¿Puedo agendar reuniones con mis clientes desde Kontari?",
     a: "Con el plan Portal, sí: agendás videollamadas con link de Jitsi generado automáticamente, se envían invitaciones por email con archivo .ics y hay un feed iCal del estudio (vencimientos, tareas y reuniones) que podés suscribir desde Google Calendar, Outlook o cualquier app de calendario.",
   },
